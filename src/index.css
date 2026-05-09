@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme ===== */
+@theme {
+  --color-black: #0A0A0A;
+  --color-charcoal: #1A1A1A;
+  --color-dark: #111111;
+  --color-white: #FFFFFF;
+  --color-cream: #FAF8F5;
+  --color-cream-dark: #F0EBE3;
+  --color-gold: #C9A96E;
+  --color-gold-light: #D4B87A;
+  --color-gold-dark: #B8944F;
+  --color-gold-muted: rgba(201, 169, 110, 0.15);
+  --color-gray-warm: #6B6B6B;
+  --color-gray-light: #E8E4DF;
+  --color-gray-medium: #999999;
+
+  --font-heading: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+  --font-bodoni: 'Bodoni Moda', 'Georgia', serif;
+}
+
+/* ===== Base Styles ===== */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background-color: var(--color-white);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--color-black);
+  }
+
+  h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-gray-warm);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+}
+
+/* ===== Component Styles ===== */
+@layer components {
+  /* Gold decorative line */
+  .gold-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+    display: block;
+  }
+
+  .gold-line-center {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Primary gold button with animated border */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 36px;
+    background: #0A0A0A;
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: conic-gradient(
+      from var(--border-angle, 0deg),
+      #3B82F6,
+      #60A5FA,
+      #93C5FD,
+      #2563EB,
+      #1D4ED8,
+      #3B82F6,
+      #60A5FA,
+      #BFDBFE,
+      #60A5FA,
+      #3B82F6
+    );
+    z-index: -2;
+    animation: borderSpin 3s linear infinite;
+    border-radius: inherit;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #0A0A0A;
+    z-index: -1;
+    transition: all 0.4s ease;
+    border-radius: inherit;
+  }
+
+  .btn-primary:hover::after {
+    background: #1A1A1A;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201, 169, 110, 0.4);
+  }
+
+  @keyframes borderSpin {
+    0% { --border-angle: 0deg; }
+    100% { --border-angle: 360deg; }
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  /* Outline button */
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--color-gold);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--color-gold);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-gold);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 169, 110, 0.25);
+  }
+
+  /* White button (for dark backgrounds) */
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--color-white);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .btn-white:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+    transform: translateY(-2px);
+  }
+
+  /* Section container */
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 768px) {
+    .section-container {
+      padding: 0 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-container {
+      padding: 0 64px;
+    }
+  }
+
+  /* Accent text */
+  .accent-text {
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: var(--color-gold);
+  }
+
+  /* Gold gradient text */
+  .gold-text {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-light);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-gold-muted);
+  color: var(--color-black);
+}
