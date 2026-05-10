@@ -26,7 +26,7 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-[#000000] text-white">
       {/* Gold top border */}
       <div className="h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
@@ -36,10 +36,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link to="/">
               <img
-                src="/images/logo.PNG"
+                src="/images/updated_logo/footer-logo-cropped.png"
                 alt="RM Strategic Growth"
-                className="h-20 w-auto object-contain mb-6"
-                style={{ filter: 'invert(1) brightness(2)', mixBlendMode: 'lighten' }}
+                className="h-16 lg:h-20 w-auto max-w-full object-contain mb-6"
               />
             </Link>
             <p className="text-white/85 text-base leading-relaxed mb-6">
@@ -48,7 +47,7 @@ export default function Footer() {
             <p className="text-white/85 text-xs tracking-wider uppercase">
               Based in South Florida
               <br />
-              Working With Clients Nationwide
+              Working With Clients Worldwide
             </p>
           </div>
 
@@ -114,7 +113,7 @@ export default function Footer() {
             <p className="text-white/85 text-xs tracking-wider">
               © {new Date().getFullYear()} RM Strategic Growth. All Rights Reserved.
             </p>
-            <p className="text-white/85 text-xs tracking-wider italic" style={{ fontFamily: 'var(--font-accent)' }}>
+            <p className="text-white text-base tracking-wider italic" style={{ fontFamily: 'var(--font-accent)' }}>
               Built to Scale, Designed to Last
             </p>
           </div>

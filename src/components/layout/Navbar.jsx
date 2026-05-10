@@ -54,12 +54,12 @@ export default function Navbar() {
 
         <div className="section-container">
           <div className="flex items-center justify-between h-20 lg:h-24">
-            {/* Logo — original with white background, displayed naturally */}
+            {/* Logo */}
             <Link to="/" className="flex-shrink-0">
               <img
-                src="/images/logo.PNG"
+                src="/images/updated_logo/header-logo-cropped.png"
                 alt="RM Strategic Growth"
-                className="h-16 lg:h-20 w-auto object-contain"
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain translate-y-1.5"
               />
             </Link>
 

@@ -9,7 +9,7 @@ const teamMembers = [
     name: 'Romy Mittler',
     role: 'Founder & CEO',
     subtitle: 'Strategic Growth Director',
-    image: '/images/3E949376-3BBA-4CFA-B839-6EAD381C01F2.PNG',
+    image: '/images/Romy Speech 2.PNG',
     bio: [
       'Romy Mittler is the founder of RM Strategic Growth, a consulting firm focused on helping medspas, aesthetic practices, and wellness brands strengthen operations, elevate patient experience, improve profitability, and scale strategically.',
       'With over 17 years of firsthand experience building and operating a successful aesthetic business, Romy brings a rare combination of operational insight, leadership experience, branding expertise, and real world understanding of the medical aesthetics industry.',
@@ -119,131 +119,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ===== FOUNDER STORY ===== */}
-      <section className="py-16 lg:py-32 bg-white">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-            <AnimatedSection direction="left" className="sticky top-32">
-              <div className="relative">
-                <img
-                  src="/images/Romy Speech 2.PNG"
-                  alt="Romy Mittler — Founder of RM Strategic Growth"
-                  className="w-full object-cover aspect-[3/4]"
-                />
-                <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-gold/30 -translate-x-4 -translate-y-4" />
-                <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-gold/30 translate-x-4 translate-y-4" />
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right">
-              <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-                Founder. Operator. Growth Strategist.
-              </p>
-              <div className="gold-line mb-8" />
-              <h2 className="mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
-                About Romy Mittler
-              </h2>
-
-              <div className="space-y-5">
-                <p className="text-gray-warm text-lg leading-relaxed">
-                  Romy Mittler is the founder of RM Strategic Growth, a consulting firm focused on helping
-                  medspas, aesthetic practices, and wellness brands strengthen operations, elevate patient
-                  experience, improve profitability, and scale strategically.
-                </p>
-                <p className="text-gray-warm text-lg leading-relaxed">
-                  With over 17 years of firsthand experience building and operating a successful aesthetic
-                  business, Romy brings a rare combination of operational insight, leadership experience,
-                  branding expertise, and real world understanding of the medical aesthetics industry.
-                </p>
-                <p className="text-gray-warm text-lg leading-relaxed">
-                  After founding and growing a successful medspa in the highly competitive South Florida market,
-                  Romy successfully exited the business, providing her with valuable perspective not only on
-                  growth and operations, but also on scalability, team development, business infrastructure,
-                  and long term enterprise value.
-                </p>
-              </div>
-
-              <div className="my-10 p-8 bg-cream border-l-4 border-gold">
-                <p
-                  className="text-charcoal italic leading-relaxed text-xl"
-                  style={{ fontFamily: 'var(--font-bodoni)', fontSize: '1.4rem' }}
-                >
-                  "Her experience inside the day-to-day realities of aesthetic businesses allows her to provide
-                  guidance grounded in practical execution — not generic consulting theory from someone who
-                  has never walked a mile in your shoes."
-                </p>
-              </div>
-
-              <div className="space-y-5">
-                <p className="text-gray-warm text-lg leading-relaxed">
-                  Romy understands the pressures aesthetic business owners face because she has lived them
-                  herself. From hiring and managing teams to navigating growth challenges, operational
-                  inefficiencies, patient expectations, staffing dynamics, branding decisions, and scaling
-                  pressures, she brings a founder's perspective to every consulting relationship.
-                </p>
-              </div>
-
-              <div className="mt-10 p-6 bg-black text-white">
-                <h4 className="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ fontFamily: 'var(--font-body)' }}>
-                  The Mission
-                </h4>
-                <p className="text-white/85 text-lg leading-relaxed">
-                  To help owners build stronger businesses without losing the brand identity, culture, and
-                  patient experience that made them successful in the first place.
-                </p>
-                <p className="text-white/40 text-xs mt-4 tracking-wider">
-                  Based in South Florida. Working With Clients Nationwide.
-                </p>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== THE RM DIFFERENCE ===== */}
-      <section className="py-16 lg:py-32 bg-black text-white relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="section-container relative z-10">
-          <SectionHeading
-            subtitle="The RM Strategic Growth Difference"
-            title="We Believe Luxury Brands Are Built Behind the Scenes"
-            description="Long before patients ever walk through the door."
-            light={true}
-            useBodoni={true}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto mt-16">
-            {[
-              { name: 'Team Culture', icon: Users },
-              { name: 'Operational Consistency', icon: Settings },
-              { name: 'Leadership Standards', icon: Award },
-              { name: 'Consultation Experience', icon: MessageSquare },
-              { name: 'Patient Communication', icon: HeartHandshake },
-              { name: 'Accountability', icon: Target },
-              { name: 'Aesthetics', icon: Sparkles },
-              { name: 'Reputation', icon: Star },
-            ].map((item, index) => (
-              <AnimatedSection key={item.name} delay={index * 0.05}>
-                <div className="group h-full p-8 bg-[#111111] border border-white/10 rounded-2xl hover:border-gold/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold/10 relative overflow-hidden flex flex-col items-center text-center">
-                  {/* Hover Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div className="w-14 h-14 flex items-center justify-center rounded-full bg-white/5 mb-6 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-500">
-                    <item.icon className="text-gold" size={24} />
-                  </div>
-                  
-                  <p className="text-base font-semibold tracking-[0.1em] text-white/90 uppercase" style={{ fontFamily: 'var(--font-body)' }}>
-                    {item.name}
-                  </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== MEET THE TEAM ===== */}
       <section className="py-16 lg:py-32 bg-white" id="team">
         <div className="section-container">
@@ -271,6 +146,21 @@ export default function About() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
+                    <div className="mt-6">
+                      <p className="text-xs font-semibold tracking-[0.2em] uppercase text-charcoal mb-4">
+                        Areas of Expertise
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {member.expertise.map((skill) => (
+                          <span
+                            key={skill}
+                            className="px-3 py-1.5 text-xs border border-gold/25 text-gray-warm hover:border-gold/50 hover:text-gold transition-all duration-300"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Bio */}
@@ -294,22 +184,6 @@ export default function About() {
                           {paragraph}
                         </p>
                       ))}
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-semibold tracking-[0.2em] uppercase text-charcoal mb-4">
-                        Areas of Expertise
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {member.expertise.map((skill) => (
-                          <span
-                            key={skill}
-                            className="px-3 py-1.5 text-xs border border-gold/25 text-gray-warm hover:border-gold/50 hover:text-gold transition-all duration-300"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -342,7 +216,7 @@ export default function About() {
               <p className="text-white/85 text-lg leading-relaxed mb-6">
                 What sets our team apart is not only our combined experience, but the depth of it.
                 We have collectively worked with thousands of patients, providers, practices,
-                industry leaders, and aesthetic brands nationwide, giving our clients direct access
+                industry leaders, and aesthetic brands worldwide, giving our clients direct access
                 to the strategies, systems, and insights used by some of the most successful
                 practices in the country.
               </p>
@@ -395,13 +269,53 @@ export default function About() {
         </div>
       </section>
 
+      {/* ===== THE RM DIFFERENCE ===== */}
+      <section className="py-16 lg:py-32 bg-black text-white relative overflow-hidden">
+        <div className="section-container relative z-10">
+          <SectionHeading
+            subtitle="The RM Strategic Growth Difference"
+            title="We Believe Luxury Brands Are Built Behind the Scenes"
+            description="Long before patients ever walk through the door."
+            light={true}
+            useBodoni={true}
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto mt-16">
+            {[
+              { name: 'Team Culture', icon: Users },
+              { name: 'Operational Consistency', icon: Settings },
+              { name: 'Leadership Standards', icon: Award },
+              { name: 'Consultation Experience', icon: MessageSquare },
+              { name: 'Patient Communication', icon: HeartHandshake },
+              { name: 'Accountability', icon: Target },
+              { name: 'Aesthetics', icon: Sparkles },
+              { name: 'Reputation', icon: Star },
+            ].map((item, index) => (
+              <AnimatedSection key={item.name} delay={index * 0.05}>
+                <div className="group h-full p-8 bg-[#111111] border border-white/10 hover:border-gold/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold/10 relative overflow-hidden flex flex-col items-center text-center">
+                  <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="w-14 h-14 flex items-center justify-center rounded-full bg-white/5 mb-6 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-500">
+                    <item.icon className="text-gold" size={24} />
+                  </div>
+
+                  <p className="text-base font-semibold tracking-[0.1em] text-white/90 uppercase" style={{ fontFamily: 'var(--font-body)' }}>
+                    {item.name}
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== CTA ===== */}
       <section className="py-16 lg:py-28 bg-black text-center">
         <div className="section-container">
           <AnimatedSection>
             <p
-              className="text-gold/80 italic text-2xl mb-6"
-              style={{ fontFamily: 'var(--font-accent)', fontSize: '1.5rem' }}
+              className="text-gold italic text-3xl lg:text-4xl mb-6 leading-tight"
+              style={{ fontFamily: 'var(--font-accent)' }}
             >
               Build a stronger business. Elevate your brand. Scale with strategy.
             </p>

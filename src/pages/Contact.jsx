@@ -11,24 +11,14 @@ const teamMembers = [
     desc: 'Founder & CEO. Over 17 years of firsthand experience building and operating successful aesthetic businesses.',
   },
   {
-    name: 'Amanda Hughes',
+    name: 'Amanda Lewis',
     image: '/images/Amanda.PNG',
-    desc: 'Patient Experience Specialist. Driving consultation success and conversion systems.',
+    desc: 'Clinical Director and master injector trainer with advanced expertise in aesthetic medicine.',
   },
   {
-    name: 'Emily Robinson',
+    name: 'Emily Shea',
     image: '/images/Emily.PNG',
-    desc: 'Clinical Director. Streamlining clinical workflows and aesthetic protocols.',
-  },
-  {
-    name: 'Jessica Taylor',
-    image: '/images/C7F8E8D2-9CF7-4C52-AB49-AB52DF5F0A79.PNG',
-    desc: 'Operations Manager. Ensuring seamless day-to-day operations and team accountability.',
-  },
-  {
-    name: 'Olivia Martinez',
-    image: '/images/EAD0FBD2-B4AA-4D96-B892-79C5B63C0A01.PNG',
-    desc: 'Marketing & Brand Strategist. Positioning MedSpas as premium luxury brands in their local markets.',
+    desc: 'Director of Industry Relations with extensive practice development and growth strategy expertise.',
   }
 ]
 export default function Contact() {
@@ -52,7 +42,7 @@ export default function Contact() {
         <title>Contact Us — RM Strategic Growth | Schedule a Consultation</title>
         <meta
           name="description"
-          content="Ready to elevate your aesthetic business? Contact RM Strategic Growth to schedule a strategic consultation. Based in South Florida, working with clients nationwide."
+          content="Ready to elevate your aesthetic business? Contact RM Strategic Growth to schedule a strategic consultation. Based in South Florida, working with clients worldwide."
         />
       </Helmet>
 
@@ -67,7 +57,7 @@ export default function Contact() {
             <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
               Schedule Your Consultation
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg mb-8">
+            <p className="text-black max-w-2xl mx-auto text-lg mb-8">
               Select a time below to book your strategic consultation call.
             </p>
 
@@ -126,7 +116,7 @@ export default function Contact() {
                   <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md border border-white/30 shadow-lg">
                     <span className="text-white font-bold text-xs" style={{ fontFamily: 'var(--font-heading)' }}>RM</span>
                   </div>
-                  <h3 className="text-white text-2xl font-bold italic" style={{ fontFamily: 'var(--font-bodoni)' }}>{member.name}</h3>
+                  <h3 className="text-white text-2xl font-bold tracking-normal" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</h3>
                 </div>
                 <p className="text-white/85 text-base leading-relaxed line-clamp-3">
                   {member.desc}
@@ -160,7 +150,7 @@ export default function Contact() {
                 South Florida
               </span>
             </h2>
-            <p className="text-white/85 text-base mb-2">Working With Clients Nationwide</p>
+            <p className="text-white/85 text-base mb-2">Working With Clients Worldwide</p>
             <div className="gold-line-center mt-8" />
           </AnimatedSection>
         </div>

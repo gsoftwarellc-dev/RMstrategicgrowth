@@ -37,37 +37,62 @@ function AnimatedCounter({ end, suffix = '', prefix = '', duration = 2 }) {
 
   return (
     <span ref={ref}>
-      {prefix}{count}{suffix}
+      {prefix}{count.toLocaleString()}{suffix}
     </span>
+  )
+}
+
+function AnimatedMetricBar({ value, delay = 0 }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <div ref={ref} className="h-px bg-white/10 overflow-hidden">
+      <motion.div
+        className="h-full bg-gold"
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: value / 100 } : { scaleX: 0 }}
+        transition={{ duration: 1.1, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+        style={{ transformOrigin: 'left' }}
+      />
+    </div>
   )
 }
 
 const stats = [
   {
     icon: TrendingUp,
-    value: 17,
+    value: 30,
     suffix: '+',
     label: 'Years of Industry Experience',
+    strength: 92,
+    insight: 'Founder-led operating knowledge',
   },
   {
     icon: Award,
-    value: 1,
+    value: 3,
     suffix: '',
     prefix: '',
-    label: 'Successfully Exited Business',
-    displayValue: '1',
+    label: 'Successfully Exited Businesses',
+    displayValue: '3',
+    strength: 78,
+    insight: 'Built, scaled, and exited',
   },
   {
     icon: Users,
-    value: 1000,
-    suffix: 's',
+    value: 10000,
+    suffix: '+',
     label: 'Patients, Providers & Practices Served',
+    strength: 96,
+    insight: 'Broad market exposure',
   },
   {
     icon: Target,
-    value: 26,
+    value: 32,
     suffix: '+',
-    label: 'States Covered Nationwide',
+    label: 'Countries Covered Worldwide',
+    strength: 86,
+    insight: 'Worldwide practice perspective',
   },
 ]
 
@@ -109,6 +134,7 @@ const taglines = [
   },
 ]
 
+
 export default function Results() {
   return (
     <>
@@ -121,60 +147,201 @@ export default function Results() {
       </Helmet>
 
       {/* ===== HERO ===== */}
-      <section className="relative h-screen flex items-center justify-center bg-black overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative bg-black overflow-hidden">
+        {/* Sticky background image */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ zIndex: 0 }}>
           <img
             src="/images/Group sitting.PNG"
             alt="RM Strategic Growth Team"
-            className="w-full h-full object-cover object-top opacity-50"
+            className="w-full h-full object-cover object-top opacity-40"
           />
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/80" />
         </div>
 
-        <div className="relative z-10 section-container py-24 lg:py-32 text-center">
-          <AnimatedSection>
-            <p className="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4">
-              Results & Approach
-            </p>
-            <div className="gold-line-center mb-8" />
-            <h1 className="text-white max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
-              Proven Results,{' '}
-              <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
-                Strategic Impact
-              </span>
-            </h1>
-            <p className="text-white/85 text-base mt-6 max-w-2xl mx-auto leading-relaxed">
-              Our approach combines decades of hands-on experience with strategic methodology
-              to deliver measurable growth for aesthetic businesses.
-            </p>
-            <div className="mt-10">
-              <a
-                href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary group inline-flex w-full sm:w-auto justify-center"
-              >
-                Book a Call
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
-              </a>
+        {/* All hero content stacked on top */}
+        <div className="relative" style={{ zIndex: 10, marginTop: '-100vh' }}>
+          {/* — Title block — */}
+          <div className="h-screen flex items-center justify-center text-center section-container">
+            <AnimatedSection>
+              <p className="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+                Results & Approach
+              </p>
+              <div className="gold-line-center mb-8" />
+              <h1 className="text-white max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
+                Proven Results,{' '}
+                <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
+                  Strategic Impact
+                </span>
+              </h1>
+              <p className="text-white/85 text-base mt-6 max-w-2xl mx-auto leading-relaxed">
+                Our approach combines decades of hands-on experience with strategic methodology
+                to deliver measurable growth for aesthetic businesses.
+              </p>
+              <div className="mt-10">
+                <a
+                  href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary group inline-flex w-full sm:w-auto justify-center"
+                >
+                  Book a Call
+                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
+                </a>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* — How We Drive Growth — */}
+          <div className="bg-black/75 backdrop-blur-sm border-t border-white/10 py-20 lg:py-28">
+            <div className="section-container">
+              <AnimatedSection className="text-center mb-14 lg:mb-20">
+                <p className="text-gold text-[10px] font-semibold tracking-[0.35em] uppercase mb-4">
+                  Our Approach
+                </p>
+                <div className="gold-line-center mb-7" />
+                <h2 className="text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
+                  How We{' '}
+                  <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
+                    Drive Growth
+                  </span>
+                </h2>
+                <p className="text-white text-base lg:text-lg max-w-xl mx-auto leading-relaxed">
+                  A structured, proven methodology that transforms aesthetic businesses from the inside out.
+                </p>
+              </AnimatedSection>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/[0.06] border border-white/[0.06]">
+                {approaches.map((step, index) => (
+                  <AnimatedSection key={step.number} delay={index * 0.13}>
+                    <div className="group relative bg-black/60 p-10 lg:p-14 h-full flex flex-col gap-8 overflow-hidden transition-colors duration-500 hover:bg-black/80">
+                      {/* Corner accent */}
+                      <div className="absolute top-0 left-0 w-16 h-16 overflow-hidden">
+                        <div className="absolute top-0 left-0 w-px h-10 bg-gold/25 group-hover:h-16 transition-all duration-500" />
+                        <div className="absolute top-0 left-0 h-px w-10 bg-gold/25 group-hover:w-16 transition-all duration-500" />
+                      </div>
+                      {/* Watermark number */}
+                      <span
+                        className="absolute -bottom-6 -right-4 text-[10rem] lg:text-[13rem] font-light leading-none select-none pointer-events-none"
+                        style={{ fontFamily: 'var(--font-heading)', color: 'transparent', WebkitTextStroke: '1px rgba(201,169,110,0.07)' }}
+                      >
+                        {step.number}
+                      </span>
+                      {/* Phase label + number */}
+                      <div className="flex items-center justify-between">
+                        <p className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">Growth Phase</p>
+                        <span className="text-4xl font-light text-gold group-hover:text-gold-light transition-colors duration-500" style={{ fontFamily: 'var(--font-heading)' }}>
+                          {step.number}
+                        </span>
+                      </div>
+                      {/* Animated bar */}
+                      <div className="w-full h-px bg-white/[0.08] relative overflow-hidden">
+                        <motion.div
+                          className="absolute inset-y-0 left-0 bg-gold"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${74 + index * 7}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        />
+                      </div>
+                      <h3 className="text-white text-2xl lg:text-3xl font-medium leading-tight group-hover:text-gold/90 transition-colors duration-500" style={{ fontFamily: 'var(--font-heading)' }}>
+                        {step.title}
+                      </h3>
+                      <p className="text-white text-base leading-relaxed max-w-sm">{step.desc}</p>
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
-          </AnimatedSection>
+          </div>
+
+          {/* — Experience That Actually Matters — */}
+          <div className="bg-black/80 backdrop-blur-sm border-t border-white/10 py-20 lg:py-28">
+            <div className="section-container">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <AnimatedSection>
+                  <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+                    What Sets Us Apart
+                  </p>
+                  <div className="gold-line mb-8" />
+                  <h2 className="text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Experience That{' '}
+                    <span className="italic text-gold" style={{ fontFamily: 'var(--font-accent)' }}>
+                      Actually Matters
+                    </span>
+                  </h2>
+                  <div className="space-y-5">
+                    <p className="text-white leading-relaxed">
+                      Growth in this industry rarely happens in a straight line. Success comes through
+                      testing, adapting, learning, refining, and understanding what actually works
+                      operationally — not just what sounds good online.
+                    </p>
+                    <p className="text-white leading-relaxed">
+                      Our advisory team brings specialized, real world experience from multiple sides
+                      of the industry. Amanda Lewis brings advanced clinical and aesthetic expertise.
+                      Emily Shea brings extensive expertise in business development and sales strategy.
+                    </p>
+                    <p className="text-white leading-relaxed">
+                      Together, our team combines operational experience, clinical expertise, leadership,
+                      branding, patient experience, sales strategy, and growth execution under one
+                      consulting group.
+                    </p>
+                  </div>
+                  <div className="mt-10">
+                    <a
+                      href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary group inline-flex w-full sm:w-auto justify-center"
+                    >
+                      Book Now
+                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
+                    </a>
+                  </div>
+                </AnimatedSection>
+
+                <AnimatedSection direction="right">
+                  <img
+                    src="/images/C7F8E8D2-9CF7-4C52-AB49-AB52DF5F0A79.PNG"
+                    alt="RM Strategic Growth approach"
+                    className="w-full object-cover aspect-[4/5]"
+                  />
+                </AnimatedSection>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ===== STATS ===== */}
-      <section className="py-12 lg:py-24 bg-cream">
+      <section className="py-16 lg:py-28 bg-[#080808] text-white">
         <div className="section-container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <AnimatedSection className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
+            <p className="text-gold text-xs font-semibold tracking-[0.28em] uppercase mb-4">
+              Proven Experience
+            </p>
+            <div className="gold-line-center mb-6" />
+            <h2 className="text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              Built on Real Industry Perspective
+            </h2>
+            <p className="text-white text-base lg:text-lg leading-relaxed">
+              A foundation of ownership, operations, clinical insight, and practice growth experience.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {stats.map((stat, index) => (
               <AnimatedSection key={stat.label} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="w-14 h-14 mx-auto flex items-center justify-center border border-gold/25 mb-5">
-                    <stat.icon className="text-gold" size={22} />
+                <div className="group h-full bg-[#111111] border border-white/10 p-6 lg:p-7 transition-all duration-300 hover:border-gold/45 hover:bg-[#141414]">
+                  <div className="flex items-center justify-between gap-4 mb-10">
+                    <div className="w-11 h-11 flex items-center justify-center border border-gold/30 bg-gold/10">
+                      <stat.icon className="text-gold" size={20} />
+                    </div>
+                    <span className="text-white/20 text-xs font-semibold tracking-[0.18em]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
                   <p
-                    className="text-4xl lg:text-5xl font-light mb-2 text-charcoal"
+                    className="text-5xl lg:text-6xl font-light mb-4 text-gold"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     {stat.displayValue ? (
@@ -187,43 +354,14 @@ export default function Results() {
                       />
                     )}
                   </p>
-                  <p className="text-gray-warm text-xs tracking-wider uppercase">
+                  <div className="w-10 h-px bg-gold/60 mb-4 transition-all duration-300 group-hover:w-16" />
+                  <p className="text-white/78 text-xs tracking-[0.18em] uppercase leading-relaxed">
                     {stat.label}
                   </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== OUR APPROACH ===== */}
-      <section className="py-16 lg:py-32 bg-white">
-        <div className="section-container">
-          <SectionHeading
-            subtitle="Our Approach"
-            title="How We Drive Growth"
-            description="A structured, proven methodology that transforms aesthetic businesses from the inside out."
-          />
-
-          <div className="max-w-4xl mx-auto">
-            {approaches.map((step, index) => (
-              <AnimatedSection key={step.number} delay={index * 0.15}>
-                <div className="flex gap-8 py-10 border-b border-gray-light/50 last:border-0 group">
-                  <div className="flex-shrink-0">
-                    <span
-                      className="text-5xl lg:text-6xl font-light text-gold/20 group-hover:text-gold/50 transition-colors duration-500"
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      {step.number}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl lg:text-2xl mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-warm leading-relaxed">
-                      {step.desc}
+                  <div className="mt-6">
+                    <AnimatedMetricBar value={stat.strength} delay={index * 0.08} />
+                    <p className="text-white text-xs mt-3 leading-relaxed">
+                      {stat.insight}
                     </p>
                   </div>
                 </div>
@@ -233,54 +371,69 @@ export default function Results() {
         </div>
       </section>
 
-      {/* ===== PHILOSOPHY BANNER ===== */}
-      <section className="relative py-28 lg:py-36 bg-black overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `repeating-linear-gradient(45deg, var(--color-gold) 0, var(--color-gold) 1px, transparent 0, transparent 50%)`,
-            backgroundSize: '40px 40px',
-          }} />
-        </div>
-        <div className="relative z-10 section-container text-center">
-          <AnimatedSection>
-            <Quote size={40} className="text-gold/30 mx-auto mb-8" />
-            <p
-              className="text-white text-2xl lg:text-4xl max-w-3xl mx-auto leading-snug"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              Our goal is to help aesthetic businesses move faster, operate smarter,
-              and build stronger{' '}
-              <span className="italic text-gold" style={{ fontFamily: 'var(--font-accent)' }}>
-                long-term brands
-              </span>
-            </p>
-            <p className="text-white/40 text-sm mt-8 tracking-wider uppercase">
-              — without wasting years learning through costly trial and error alone.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
 
       {/* ===== TAGLINE CARDS ===== */}
-      <section className="py-16 lg:py-28 bg-cream">
-        <div className="section-container">
-          <SectionHeading
-            subtitle="Our Promise"
-            title="What We Stand For"
-          />
+      <section className="relative py-20 lg:py-32 bg-[#0A0A0A] overflow-hidden">
+        {/* Radial glow center */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[700px] h-[400px] rounded-full opacity-[0.06]" style={{
+            background: 'radial-gradient(ellipse, var(--color-gold) 0%, transparent 70%)',
+          }} />
+        </div>
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="relative z-10 section-container">
+          {/* Header */}
+          <AnimatedSection className="text-center mb-14 lg:mb-20">
+            <p className="text-gold text-[10px] font-semibold tracking-[0.35em] uppercase mb-4">Our Promise</p>
+            <div className="gold-line-center mb-7" />
+            <h2 className="text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+              What We{' '}
+              <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
+                Stand For
+              </span>
+            </h2>
+          </AnimatedSection>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05]">
             {taglines.map((tagline, index) => (
               <AnimatedSection key={index} delay={index * 0.15}>
-                <div className="bg-white p-10 border border-gray-light/50 text-center hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all duration-500 h-full flex flex-col items-center justify-center">
-                  <div className="w-10 h-[1px] bg-gold mb-6" />
+                <div className="group relative bg-[#0A0A0A] p-10 lg:p-14 flex flex-col justify-between min-h-[280px] overflow-hidden transition-colors duration-500 hover:bg-[#101010]">
+                  {/* Corner accent lines */}
+                  <div className="absolute top-0 left-0 w-12 h-12">
+                    <div className="absolute top-0 left-0 w-px h-8 bg-white/30 group-hover:h-12 transition-all duration-500" />
+                    <div className="absolute top-0 left-0 h-px w-8 bg-white/30 group-hover:w-12 transition-all duration-500" />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-12 h-12">
+                    <div className="absolute bottom-0 right-0 w-px h-8 bg-white/30 group-hover:h-12 transition-all duration-500" />
+                    <div className="absolute bottom-0 right-0 h-px w-8 bg-white/30 group-hover:w-12 transition-all duration-500" />
+                  </div>
+
+                  {/* Top Header: Gold dash & Number */}
+                  <div className="flex items-center justify-between mb-8 relative z-10">
+                    <div className="w-8 h-px bg-gold/50 group-hover:w-14 transition-all duration-500" />
+                    <span className="text-white text-xl font-medium tracking-[0.1em] transition-colors duration-500">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  {/* Text */}
                   <p
-                    className="text-lg text-charcoal leading-relaxed"
+                    className="text-white text-xl lg:text-2xl font-light leading-snug flex-1"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     {tagline.text}
                   </p>
-                  <div className="w-10 h-[1px] bg-gold mt-6" />
+
+                  {/* Bottom row */}
+                  <div className="flex items-center gap-3 mt-10">
+                    <div className="w-4 h-px bg-gold/40" />
+                    <span className="text-gold text-sm font-semibold tracking-[0.25em] uppercase">
+                      RM Strategic Growth
+                    </span>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -288,53 +441,70 @@ export default function Results() {
         </div>
       </section>
 
-      {/* ===== WHAT SETS US APART ===== */}
-      <section className="py-16 lg:py-28 bg-white">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <AnimatedSection>
-              <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-                What Sets Us Apart
-              </p>
-              <div className="gold-line mb-8" />
-              <h2 className="mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-                Experience That{' '}
-                <span className="italic" style={{ fontFamily: 'var(--font-accent)' }}>
-                  Actually Matters
-                </span>
-              </h2>
-              <div className="space-y-5">
-                <p className="text-gray-warm leading-relaxed">
-                  Growth in this industry rarely happens in a straight line. Success comes through
-                  testing, adapting, learning, refining, and understanding what actually works
-                  operationally — not just what sounds good online.
-                </p>
-                <p className="text-gray-warm leading-relaxed">
-                  Our advisory team brings specialized, real world experience from multiple sides
-                  of the industry. Amanda Lewis brings advanced clinical and aesthetic expertise.
-                  Emily Shea brings extensive expertise in business development and sales strategy.
-                </p>
-                <p className="text-gray-warm leading-relaxed">
-                  Together, our team combines operational experience, clinical expertise, leadership,
-                  branding, patient experience, sales strategy, and growth execution under one
-                  consulting group.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right">
-              <img
-                src="/images/C7F8E8D2-9CF7-4C52-AB49-AB52DF5F0A79.PNG"
-                alt="RM Strategic Growth approach"
-                className="w-full object-cover aspect-[4/5]"
-              />
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
 
       {/* ===== CLIENT REVIEWS ===== */}
       <ClientReviews />
+
+      {/* ===== PHILOSOPHY BANNER ===== */}
+      <section className="relative py-24 lg:py-40 overflow-hidden bg-[#050505]">
+        {/* Radial gold glow */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[600px] h-[600px] rounded-full opacity-[0.07]" style={{
+            background: 'radial-gradient(circle, var(--color-gold) 0%, transparent 70%)',
+          }} />
+        </div>
+
+        {/* Diagonal grid texture */}
+        <div className="absolute inset-0 opacity-[0.035]" style={{
+          backgroundImage: `repeating-linear-gradient(45deg, var(--color-gold) 0, var(--color-gold) 1px, transparent 0, transparent 50%)`,
+          backgroundSize: '36px 36px',
+        }} />
+
+        {/* Top & bottom gold lines */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+
+        <div className="relative z-10 section-container">
+          <AnimatedSection className="max-w-4xl mx-auto text-center">
+            {/* Decorative open-quote mark */}
+            <div
+              className="text-[7rem] lg:text-[9rem] leading-none text-gold/15 select-none mb-[-2rem]"
+              style={{ fontFamily: 'var(--font-accent)' }}
+            >
+              "
+            </div>
+
+            {/* Main quote */}
+            <p
+              className="text-white text-2xl sm:text-3xl lg:text-5xl leading-tight font-light mb-6"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Our goal is to help aesthetic businesses{' '}
+              <span className="italic text-gold" style={{ fontFamily: 'var(--font-accent)' }}>
+                move faster,
+              </span>{' '}
+              operate smarter, and build stronger{' '}
+              <span className="italic text-gold" style={{ fontFamily: 'var(--font-accent)' }}>
+                long-term brands
+              </span>
+            </p>
+
+            {/* Sub-line */}
+            <div className="flex items-center justify-center gap-4 mt-10">
+              <div className="h-px w-12 bg-gold/40" />
+              <p className="text-white text-xs font-semibold tracking-[0.3em] uppercase">
+                without wasting years learning through costly trial and error alone
+              </p>
+              <div className="h-px w-12 bg-gold/40" />
+            </div>
+
+            {/* Attribution */}
+            <p className="text-gold text-sm tracking-[0.25em] uppercase mt-6 font-semibold">
+              RM Strategic Growth
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* ===== CTA ===== */}
       <section className="py-16 lg:py-28 bg-black text-center">

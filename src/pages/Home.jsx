@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -13,7 +13,6 @@ import {
   Settings,
   Sparkles,
   ArrowRight,
-  ChevronRight,
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SectionHeading from '../components/ui/SectionHeading'
@@ -26,24 +25,14 @@ const teamMembers = [
     desc: 'Founder & CEO. Over 17 years of firsthand experience building and operating successful aesthetic businesses.',
   },
   {
-    name: 'Amanda Hughes',
+    name: 'Amanda Lewis',
     image: '/images/Amanda.PNG',
-    desc: 'Patient Experience Specialist. Driving consultation success and conversion systems.',
+    desc: 'Clinical Director and master injector trainer with advanced expertise in aesthetic medicine.',
   },
   {
-    name: 'Emily Robinson',
+    name: 'Emily Shea',
     image: '/images/Emily.PNG',
-    desc: 'Clinical Director. Streamlining clinical workflows and aesthetic protocols.',
-  },
-  {
-    name: 'Jessica Taylor',
-    image: '/images/C7F8E8D2-9CF7-4C52-AB49-AB52DF5F0A79.PNG',
-    desc: 'Operations Manager. Ensuring seamless day-to-day operations and team accountability.',
-  },
-  {
-    name: 'Olivia Martinez',
-    image: '/images/EAD0FBD2-B4AA-4D96-B892-79C5B63C0A01.PNG',
-    desc: 'Marketing & Brand Strategist. Positioning MedSpas as premium luxury brands in their local markets.',
+    desc: 'Director of Industry Relations with extensive practice development and growth strategy expertise.',
   }
 ]
 
@@ -122,9 +111,9 @@ const heroSlides = [
   {
     image: '/images/hero1.png',
     imageClass: 'object-contain',
-    title1: 'Grow ',
-    titleItalic: 'Smarter,',
-    title2: 'Not Harder',
+    title1: 'Scale With ',
+    titleItalic: 'Strategy,',
+    title2: 'Lead With Confidence',
     description: 'Helping aesthetic businesses scale smarter, strengthen operations, elevate patient experience, and build profitable brands designed for long-term growth.'
   },
   {
@@ -138,8 +127,6 @@ const heroSlides = [
 ]
 
 export default function Home() {
-  const [openFeature, setOpenFeature] = useState(0)
-  const featureRefs = useRef([])
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0)
 
   useEffect(() => {
@@ -147,22 +134,6 @@ export default function Home() {
       setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length)
     }, 6000)
     return () => clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    const observers = []
-    featureRefs.current.forEach((el, index) => {
-      if (!el) return
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setOpenFeature(index)
-        },
-        { rootMargin: '-25% 0px -55% 0px', threshold: 0 }
-      )
-      observer.observe(el)
-      observers.push(observer)
-    })
-    return () => observers.forEach((o) => o.disconnect())
   }, [])
 
   const currentSlideData = heroSlides[currentHeroSlide]
@@ -328,7 +299,7 @@ export default function Home() {
                   <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md border border-white/30 shadow-lg">
                     <span className="text-white font-bold text-xs" style={{ fontFamily: 'var(--font-heading)' }}>RM</span>
                   </div>
-                  <h3 className="text-white text-2xl font-bold italic" style={{ fontFamily: 'var(--font-bodoni)' }}>{member.name}</h3>
+                  <h3 className="text-white text-2xl font-bold tracking-normal" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</h3>
                 </div>
                 <p className="text-white/85 text-base leading-relaxed line-clamp-3">
                   {member.desc}
@@ -382,92 +353,83 @@ export default function Home() {
           <SectionHeading
             subtitle="Why Choose Us"
             title="Built From Real-World Experience"
-            description="Everything we advise on comes from real world experience inside the business — not theory alone."
+            description="RM Strategic Growth was built differently, with advisory rooted in hands-on experience across the realities of aesthetic business growth."
             light={true}
           />
 
-          <div className="max-w-5xl mx-auto">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                ref={(el) => (featureRefs.current[index] = el)}
-                onClick={() => setOpenFeature(openFeature === index ? -1 : index)}
-                className={`border-b cursor-pointer group transition-colors duration-300 ${
-                  index === 0 ? 'border-t' : ''
-                } border-white/10 hover:border-gold/20`}
-              >
-                {/* Row header */}
-                <div className="flex items-center gap-8 py-10 px-2">
-                  <span
-                    className={`text-4xl font-bold transition-colors duration-300 w-16 flex-shrink-0 ${
-                      openFeature === index ? 'text-gold' : 'text-white/20 group-hover:text-white/40'
-                    }`}
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    {feature.num}
-                  </span>
-
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 border transition-all duration-300 ${
-                    openFeature === index ? 'bg-gold/15 border-gold/50' : 'bg-white/5 border-white/10 group-hover:border-gold/30'
-                  }`}>
-                    <feature.icon size={24} className={openFeature === index ? 'text-gold' : 'text-white/85 text-base group-hover:text-gold'} />
-                  </div>
-
-                  <h3
-                    className={`text-3xl lg:text-4xl flex-grow transition-colors duration-300 ${
-                      openFeature === index ? 'text-white' : 'text-white/85 text-base group-hover:text-white'
-                    }`}
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    {feature.title}
-                  </h3>
-
-                  <motion.div
-                    animate={{ rotate: openFeature === index ? 45 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={`w-10 h-10 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                      openFeature === index ? 'bg-gold border-gold text-black' : 'border-white/15 text-white/40'
-                    }`}
-                  >
-                    <ChevronRight size={18} />
-                  </motion.div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-start mb-12 lg:mb-16">
+              <AnimatedSection direction="left">
+                <div className="border-l-2 border-gold pl-6 lg:pl-8">
+                  <p className="text-white/90 text-lg lg:text-xl leading-relaxed mb-6">
+                    The aesthetics industry is filled with consultants who teach strategy from
+                    the outside looking in. RM Strategic Growth was built differently. Everything
+                    we advise on comes from real world experience inside the business, not theory
+                    alone.
+                  </p>
+                  <p className="text-white/75 text-base leading-relaxed">
+                    Our team has worked hands-on in aesthetics, patient experience, injector
+                    training, operations, sales growth, vendor negotiations, leadership
+                    development, branding, and business scaling at a high level within the
+                    industry.
+                  </p>
                 </div>
+              </AnimatedSection>
 
-                {/* Expandable content */}
-                <AnimatePresence initial={false}>
-                  {openFeature === index && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-2 pb-14 flex flex-col lg:flex-row gap-10 lg:gap-12 lg:gap-20 pl-28">
-                        <p className="text-white/85 text-base leading-relaxed max-w-md flex-shrink-0">
-                          {feature.desc}
-                        </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 flex-grow">
-                          {feature.points.map((point, i) => (
-                            <motion.div
-                              key={point}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: i * 0.05 }}
-                              className="flex items-center gap-4"
-                            >
-                              <div className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-                              <span className="text-white/85 text-lg">{point}</span>
-                            </motion.div>
-                          ))}
-                        </div>
+              <AnimatedSection direction="right" delay={0.1}>
+                <div className="bg-white/[0.04] border border-white/10 p-6 lg:p-8">
+                  <p className="text-gold text-xs font-semibold tracking-[0.22em] uppercase mb-4">
+                    Why It Matters
+                  </p>
+                  <p className="text-white/80 text-base leading-relaxed">
+                    Many of the expensive mistakes, inefficiencies, staffing challenges,
+                    operational setbacks, growth obstacles, and scaling pains aesthetic business
+                    owners encounter are not new territory for us.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {features.map((feature, index) => (
+                <AnimatedSection key={feature.title} delay={index * 0.08}>
+                  <div className="h-full bg-white/[0.035] border border-white/10 p-6 lg:p-7 transition-all duration-300 hover:border-gold/40 hover:bg-white/[0.055]">
+                    <div className="flex items-center justify-between gap-4 mb-8">
+                      <span
+                        className="text-4xl font-bold text-gold"
+                        style={{ fontFamily: 'var(--font-heading)' }}
+                      >
+                        {feature.num}
+                      </span>
+                      <div className="w-12 h-12 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center">
+                        <feature.icon size={22} className="text-gold" />
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+                    </div>
+
+                    <h3
+                      className="text-white text-2xl mb-4"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      {feature.title}
+                    </h3>
+                    <p className="text-white text-base leading-relaxed mb-6">
+                      {feature.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {feature.points.slice(0, 4).map((point) => (
+                        <span
+                          key={point}
+                          className="text-white text-xs uppercase tracking-[0.12em] border border-white/10 px-3 py-2 bg-black/20"
+                        >
+                          {point}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -510,7 +472,7 @@ export default function Home() {
                 medical aesthetics industry.
               </p>
               <p
-                className="text-gold/80 text-lg italic mb-8"
+                className="text-gold text-2xl lg:text-3xl italic mb-8 leading-tight"
                 style={{ fontFamily: 'var(--font-accent)' }}
               >
                 "Building a successful aesthetic business requires far more than good marketing

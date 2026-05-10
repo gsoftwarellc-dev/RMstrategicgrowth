@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
   TrendingUp,
   Settings,
@@ -11,8 +9,6 @@ import {
   Shield,
   ArrowRight,
   CheckCircle,
-  Plus,
-  Minus,
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SectionHeading from '../components/ui/SectionHeading'
@@ -20,10 +16,8 @@ import SectionHeading from '../components/ui/SectionHeading'
 const services = [
   {
     icon: TrendingUp,
-    number: '01',
     title: 'Business Growth Strategy',
     subtitle: 'Strategic planning designed to help practices grow with intention, profitability, and operational clarity.',
-    color: 'from-amber-900/20 to-transparent',
     items: [
       'Revenue optimization',
       'Pricing strategy',
@@ -38,10 +32,8 @@ const services = [
   },
   {
     icon: Settings,
-    number: '02',
     title: 'Operations & Systems',
     subtitle: 'Strong businesses require strong operational foundations.',
-    color: 'from-zinc-800/40 to-transparent',
     items: [
       'Operational workflows',
       'Front desk systems',
@@ -56,10 +48,8 @@ const services = [
   },
   {
     icon: Users,
-    number: '03',
     title: 'Team Leadership & Culture',
     subtitle: 'The success of any aesthetic business is deeply connected to the quality of its leadership and culture.',
-    color: 'from-amber-900/20 to-transparent',
     items: [
       'Management structure',
       'Leadership development',
@@ -74,10 +64,8 @@ const services = [
   },
   {
     icon: Sparkles,
-    number: '04',
     title: 'Brand Positioning & Patient Experience',
     subtitle: 'Luxury patient experience goes beyond aesthetics alone.',
-    color: 'from-zinc-800/40 to-transparent',
     items: [
       'Brand identity',
       'Client experience',
@@ -91,10 +79,8 @@ const services = [
   },
   {
     icon: Rocket,
-    number: '05',
     title: 'New Practice Launch Consulting',
     subtitle: 'Launching a medspa or aesthetic brand involves hundreds of strategic and operational decisions.',
-    color: 'from-amber-900/20 to-transparent',
     items: [
       'Business planning',
       'Launch preparation',
@@ -108,10 +94,8 @@ const services = [
   },
   {
     icon: Shield,
-    number: '06',
     title: 'Founder Advisory & Mentorship',
     subtitle: 'Confidential strategic support for founders navigating complex business challenges.',
-    color: 'from-zinc-800/40 to-transparent',
     items: [
       'Growth challenges',
       'Operational stress',
@@ -125,124 +109,84 @@ const services = [
   },
 ]
 
-function ServiceCard({ service, index, isOpen, onToggle }) {
+function serviceId(title) {
+  return title
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+function ServiceCard({ service, index }) {
   return (
     <AnimatedSection delay={index * 0.08}>
-      <motion.div
-        layout
-        className={`relative bg-[#0f0f0f] border border-white/8 hover:border-gold/40 transition-colors duration-500 cursor-pointer overflow-hidden group ${isOpen ? 'border-gold/40' : ''}`}
-        onClick={onToggle}
-        style={{ borderRadius: '1.25rem' }}
-      >
-        {/* Gradient top accent */}
-        <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent transition-opacity duration-500 ${isOpen ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'}`} />
+      <div id={serviceId(service.title)} className="relative bg-[#0f0f0f] border border-white/10 overflow-hidden group h-full scroll-mt-28">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-70" />
 
-        {/* Card header */}
-        <div className="p-8 lg:p-10">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-6">
-              {/* Number + Icon stack */}
-              <div className="flex flex-col items-center gap-3">
-                <span
-                  className="text-gold/30 font-bold leading-none select-none"
-                  style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem' }}
-                >
-                  {service.number}
-                </span>
-                <div className={`w-12 h-12 flex items-center justify-center rounded-xl border transition-all duration-500 ${isOpen ? 'bg-gold/15 border-gold/50' : 'bg-white/5 border-white/10 group-hover:bg-gold/10 group-hover:border-gold/30'}`}>
-                  <service.icon className={`transition-colors duration-300 ${isOpen ? 'text-gold' : 'text-white/85 text-base group-hover:text-gold'}`} size={22} />
-                </div>
-              </div>
-
-              {/* Title + subtitle */}
-              <div className="pt-1">
-                <h3
-                  className="text-white text-xl lg:text-2xl leading-snug mb-2 group-hover:text-gold/90 transition-colors duration-300"
-                  style={{ fontFamily: 'var(--font-heading)' }}
-                >
-                  {service.title}
-                </h3>
-                <p className="text-white/85 text-base leading-relaxed max-w-lg">
-                  {service.subtitle}
-                </p>
-              </div>
+        <div className="p-6 lg:p-8 h-full flex flex-col">
+          <div className="flex items-start gap-5 mb-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/10 border border-gold/30 flex-shrink-0">
+              <service.icon className="text-gold" size={22} />
             </div>
 
-            {/* Toggle icon */}
-            <div className={`flex-shrink-0 mt-1 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-gold border-gold text-black' : 'border-white/15 text-white/40 group-hover:border-gold/40 group-hover:text-gold'}`}>
-              {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+            <div>
+              <p className="text-gold text-[10px] font-semibold tracking-[0.24em] uppercase mb-2">
+                Service Area
+              </p>
+              <h3
+                className="text-white text-xl lg:text-2xl leading-snug"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                {service.title}
+              </h3>
+            </div>
+          </div>
+
+          <p className="text-white text-base leading-relaxed mb-6">
+            {service.subtitle}
+          </p>
+
+          <div className="border-t border-white/10 pt-5 mt-auto">
+            <p className="text-gold text-[10px] font-semibold tracking-[0.24em] uppercase mb-4">
+              Areas of Focus
+            </p>
+            <div className="grid grid-cols-1 gap-3">
+              {service.items.map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle size={14} className="text-gold flex-shrink-0 mt-0.5" />
+                  <span className="text-white text-sm leading-relaxed">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
+      </div>
+    </AnimatedSection>
+  )
+}
 
-        {/* Expandable items */}
-        <AnimatePresence initial={false}>
-          {isOpen && (
-            <motion.div
-              key="content"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="overflow-hidden"
+function ServiceNavigation() {
+  return (
+    <AnimatedSection>
+      <div className="max-w-5xl mx-auto mb-10 lg:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {services.map((service) => (
+            <a
+              key={service.title}
+              href={`#${serviceId(service.title)}`}
+              className="flex items-center gap-3 border border-white/10 bg-white/[0.03] px-4 py-3 text-white/85 hover:border-gold/40 hover:text-white transition-colors duration-300"
             >
-              <div className="px-8 lg:px-10 pb-8 lg:pb-10">
-                <div className="border-t border-white/8 pt-6">
-                  <p className="text-gold text-[10px] font-semibold tracking-[0.3em] uppercase mb-5">
-                    Areas of Focus
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {service.items.map((item, i) => (
-                      <motion.div
-                        key={item}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.04, duration: 0.3 }}
-                        className="flex items-center gap-3 bg-white/10 rounded-lg px-4 py-2.5 border border-white/10"
-                      >
-                        <CheckCircle size={13} className="text-gold flex-shrink-0" />
-                        <span className="text-white text-sm font-medium">{item}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+              <service.icon className="text-gold flex-shrink-0" size={17} />
+              <span className="text-sm font-medium">{service.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
     </AnimatedSection>
   )
 }
 
 export default function Services() {
-  const [openIndex, setOpenIndex] = useState(0)
-  const cardRefs = useRef([])
-
-  useEffect(() => {
-    const observers = []
-
-    cardRefs.current.forEach((el, index) => {
-      if (!el) return
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setOpenIndex(index)
-          }
-        },
-        {
-          // fires when the card crosses 25% from top → 45% from top of viewport
-          rootMargin: '-25% 0px -55% 0px',
-          threshold: 0,
-        }
-      )
-      observer.observe(el)
-      observers.push(observer)
-    })
-
-    return () => observers.forEach((obs) => obs.disconnect())
-  }, [])
-
   return (
     <>
       <Helmet>
@@ -278,7 +222,7 @@ export default function Services() {
               </span>{' '}
               Businesses
             </h1>
-            <p className="text-white/85 text-base mt-6 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white text-base mt-6 max-w-2xl mx-auto leading-relaxed">
               Our services are customized to the unique needs of each business and may be provided virtually or onsite.
             </p>
             <div className="mt-10">
@@ -302,20 +246,20 @@ export default function Services() {
           <SectionHeading
             subtitle="Our Services"
             title="How We Help You Grow"
+            description="Strategic support across growth, operations, leadership, patient experience, launch planning, and founder advisory."
             light={true}
             useBodoni={false}
           />
 
-          <div className="max-w-5xl mx-auto space-y-4">
+          <ServiceNavigation />
+
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
             {services.map((service, index) => (
-              <div key={service.title} ref={(el) => (cardRefs.current[index] = el)}>
-                <ServiceCard
-                  service={service}
-                  index={index}
-                  isOpen={openIndex === index}
-                  onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
-                />
-              </div>
+              <ServiceCard
+                key={service.title}
+                service={service}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -412,7 +356,7 @@ export default function Services() {
               <AnimatedSection key={industry} delay={index * 0.05}>
                 <div className="flex items-center gap-3 p-4 border border-white/10 hover:border-gold/30 transition-all duration-300">
                   <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
-                  <span className="text-white/85 text-base">{industry}</span>
+                  <span className="text-white text-base">{industry}</span>
                 </div>
               </AnimatedSection>
             ))}
@@ -425,8 +369,8 @@ export default function Services() {
         <div className="section-container">
           <AnimatedSection>
             <p
-              className="text-gold/80 italic text-xl mb-6"
-              style={{ fontFamily: 'var(--font-accent)', fontSize: '1.3rem' }}
+              className="text-gold italic text-3xl lg:text-4xl mb-6 leading-tight"
+              style={{ fontFamily: 'var(--font-accent)' }}
             >
               For business owners ready to scale smarter.
             </p>
