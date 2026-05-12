@@ -55,39 +55,91 @@ export default function Contact() {
       </Helmet>
 
       {/* ===== HERO BOOKING BANNER ===== */}
-      <section className="bg-[#0A0A0A] overflow-hidden min-h-screen flex items-center">
-        <div className="section-container w-full">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
 
+      {/* Mobile: full-screen background image with text overlay */}
+      <section className="relative lg:hidden h-screen min-h-[600px] bg-[#0A0A0A] overflow-hidden">
+        <img
+          src="/images/EAD0FBD2-B4AA-4D96-B892-79C5B63C0A01.PNG"
+          alt="Romy Mittler"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+        />
+        {/* Gradient overlay — heavy at bottom for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/20 pointer-events-none" />
+        {/* Top fade for navbar blend */}
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black to-transparent pointer-events-none" />
+
+        {/* Text pinned to bottom */}
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-10">
+          <AnimatedSection>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase mb-3" style={{ color: 'var(--color-gold)' }}>
+              Book a Consultation
+            </p>
+            <div className="gold-line mb-4" />
+            <h1
+              className="text-[1.75rem] font-bold leading-[1.2] mb-4 text-white"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Are You Ready to<br />Increase Your Revenue<br />by{' '}
+              <em style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)', fontStyle: 'italic' }}>
+                100–150%?
+              </em>
+            </h1>
+            <p className="text-white/80 text-sm leading-relaxed mb-6 max-w-sm" style={{ fontFamily: 'var(--font-body)' }}>
+              Work directly with our team of aesthetic industry experts to scale your practice, boost revenue, and build a business that thrives.
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-primary w-full justify-center"
+              >
+                Book a Call
+              </button>
+              <a
+                href="tel:+14075755121"
+                className="flex items-center justify-center gap-2 text-sm font-medium tracking-wide"
+                style={{ color: 'var(--color-gold)' }}
+              >
+                <Phone size={16} />
+                407-575-5121
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Desktop: side-by-side layout */}
+      <section className="hidden lg:flex bg-[#0A0A0A] overflow-hidden min-h-screen items-center">
+        <div className="section-container w-full">
+          <div className="flex flex-row items-center gap-12 py-0">
             {/* LEFT — copy + CTA */}
-            <div className="flex-1 py-16 text-white">
+            <div className="flex-1 text-white">
               <AnimatedSection>
                 <p className="text-xs font-semibold tracking-[0.3em] uppercase mb-4" style={{ color: 'var(--color-gold)' }}>
                   Book a Consultation
                 </p>
-                <div className="gold-line mb-8" />
+                <div className="gold-line mb-6" />
                 <h1
-                  className="text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-white"
+                  className="font-bold leading-[1.1] mb-5 text-white text-[clamp(2.5rem,4vw,3.75rem)]"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Are You Ready to<br />Increase Your Revenue<br />by{' '}
-                  <em className="not-italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)', fontStyle: 'italic' }}>
+                  <em style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)', fontStyle: 'italic' }}>
                     100–150%?
                   </em>
                 </h1>
-                <p className="text-white text-base max-w-md mb-10 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-white/85 text-base max-w-md mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
                   Work directly with our team of aesthetic industry experts to scale your practice, boost revenue, and build a business that thrives.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                <div className="flex flex-row gap-4 items-center">
                   <button
                     onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="btn-primary"
+                    className="btn-primary justify-center"
                   >
                     Book a Call
                   </button>
                   <a
                     href="tel:+14075755121"
-                    className="flex items-center gap-2 text-sm font-medium tracking-wide transition-colors hover:opacity-80"
+                    className="flex items-center gap-2 text-sm font-medium tracking-wide hover:opacity-80 transition-opacity"
                     style={{ color: 'var(--color-gold)' }}
                   >
                     <Phone size={16} />
@@ -98,16 +150,13 @@ export default function Contact() {
             </div>
 
             {/* RIGHT — Romy photo */}
-            <div className="flex-shrink-0 w-full lg:w-[460px] flex items-center justify-center lg:justify-end relative">
-              <div className="relative w-[360px] lg:w-[460px]">
-                <img
-                  src="/images/EAD0FBD2-B4AA-4D96-B892-79C5B63C0A01.PNG"
-                  alt="Romy Mittler"
-                  className="w-full object-cover object-center block"
-                />
-              </div>
+            <div className="flex-shrink-0 w-[460px] flex items-end justify-end">
+              <img
+                src="/images/EAD0FBD2-B4AA-4D96-B892-79C5B63C0A01.PNG"
+                alt="Romy Mittler"
+                className="w-full object-cover object-top block"
+              />
             </div>
-
           </div>
         </div>
       </section>
@@ -159,9 +208,9 @@ export default function Contact() {
           </a>
         </div>
 
-        <div className="flex justify-center gap-6 px-4 mt-10">
+        <div className="flex flex-col lg:flex-row justify-center gap-6 px-4 mt-10">
           {teamMembers.map((member, i) => (
-            <div key={i} className="relative flex-1 min-w-0 max-w-[420px] h-[550px] rounded-[2rem] overflow-hidden group cursor-default">
+            <div key={i} className="relative w-full lg:flex-1 lg:min-w-0 lg:max-w-[420px] h-[520px] lg:h-[550px] rounded-[2rem] overflow-hidden group cursor-default">
               <img
                 src={member.image}
                 alt={member.name}

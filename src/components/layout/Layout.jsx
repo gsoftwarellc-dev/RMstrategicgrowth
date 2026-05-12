@@ -4,9 +4,9 @@ import Footer from './Footer'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ overflowX: 'clip' }}>
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow" style={{ overflowX: 'clip' }}>
         <Outlet />
       </main>
       <Footer />

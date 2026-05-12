@@ -149,18 +149,98 @@ export default function Home() {
       </Helmet>
 
       {/* ===== HERO SECTION ===== */}
-      <section className="relative min-h-screen overflow-hidden bg-black">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 min-h-screen lg:h-screen">
+      <section className="relative bg-black overflow-hidden">
+
+        {/* ── MOBILE hero (full-screen bg image + text overlay) ── */}
+        <div className="relative lg:hidden h-screen min-h-[600px]">
+          {/* Background image */}
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={`mob-img-${currentHeroSlide}`}
+              src={currentSlideData.image}
+              alt="RM Strategic Growth"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className={`absolute inset-0 w-full h-full ${currentSlideData.imageClass}`}
+            />
+          </AnimatePresence>
+          {/* Dark gradient so text is always readable */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 pointer-events-none" />
+          {/* Top fade for navbar blend */}
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black to-transparent pointer-events-none" />
+
+          {/* Text pinned to bottom */}
+          <div className="absolute inset-x-0 bottom-0 px-6 pb-10">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-3"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              RM Strategic Growth
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="gold-line mb-4"
+            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`mob-text-${currentHeroSlide}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h1
+                  className="text-white text-[1.75rem] leading-[1.2] mb-3"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {currentSlideData.title1}
+                  <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
+                    {currentSlideData.titleItalic}
+                  </span>
+                  <br />
+                  {currentSlideData.title2}
+                </h1>
+                <p className="text-white/80 text-sm leading-relaxed mb-6 max-w-sm">
+                  {currentSlideData.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+              className="flex flex-col gap-3"
+            >
+              <a href="/contact#booking" className="btn-primary w-full text-center justify-center">
+                Schedule a Consultation
+                <ArrowRight className="ml-2" size={16} />
+              </a>
+              <Link to="/services" className="btn-white w-full text-center justify-center">
+                Our Services
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* ── DESKTOP hero (side-by-side) ── */}
+        <div className="hidden lg:grid lg:grid-cols-2 h-screen">
           {/* Left — Image */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
-            className="relative h-[45vh] lg:h-screen bg-black"
+            className="relative h-screen bg-black"
           >
             <AnimatePresence mode="wait">
               <motion.img
-                key={`img-${currentHeroSlide}`}
+                key={`desk-img-${currentHeroSlide}`}
                 src={currentSlideData.image}
                 alt="RM Strategic Growth"
                 initial={{ opacity: 0 }}
@@ -170,82 +250,67 @@ export default function Home() {
                 className={`absolute inset-0 w-full h-full ${currentSlideData.imageClass}`}
               />
             </AnimatePresence>
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black/25 z-10 pointer-events-none" />
-            {/* Top fade */}
             <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
-            {/* Bottom fade */}
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
-            {/* Right edge fade into the dark text side */}
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent hidden lg:block z-10 pointer-events-none" />
-            {/* Bottom fade on mobile */}
-            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent lg:hidden z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
           </motion.div>
 
           {/* Right — Text */}
-          <div className="relative bg-black flex flex-col justify-center flex-grow pt-10 pb-16 lg:py-0">
-            <div className="px-6 sm:px-8 lg:px-16 xl:px-24 w-full">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-6"
-                style={{ fontFamily: 'var(--font-body)' }}
-              >
-                RM Strategic Growth
-              </motion.p>
-
+          <div className="relative bg-black flex flex-col justify-center px-16 xl:px-24">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              RM Strategic Growth
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="gold-line mb-8"
+            />
+            <AnimatePresence mode="wait">
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="gold-line mb-8"
-              />
-
-              <div className="min-h-[160px] flex flex-col justify-end">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`text-${currentHeroSlide}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <h1
-                      className="text-white leading-[1.1] mb-6"
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      {currentSlideData.title1}
-                      <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
-                        {currentSlideData.titleItalic}
-                      </span>
-                      <br />
-                      {currentSlideData.title2}
-                    </h1>
-
-                    <p className="text-white/85 text-base lg:text-xl leading-relaxed mb-10 max-w-lg">
-                      {currentSlideData.description}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                key={`desk-text-${currentHeroSlide}`}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
-                className="flex flex-col sm:flex-row flex-wrap gap-4 mt-6"
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
               >
-                <a href="/contact#booking"  className="btn-primary w-full sm:w-auto text-center justify-center">
-                  Schedule a Consultation
-                  <ArrowRight className="ml-2" size={16} />
-                </a>
-                <Link to="/services" className="btn-white w-full sm:w-auto text-center justify-center">
-                  Our Services
-                </Link>
+                <h1
+                  className="text-white leading-[1.1] mb-6"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {currentSlideData.title1}
+                  <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
+                    {currentSlideData.titleItalic}
+                  </span>
+                  <br />
+                  {currentSlideData.title2}
+                </h1>
+                <p className="text-white/85 text-xl leading-relaxed mb-10 max-w-lg">
+                  {currentSlideData.description}
+                </p>
               </motion.div>
-            </div>
-
+            </AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.6 }}
+              className="flex flex-row flex-wrap gap-4"
+            >
+              <a href="/contact#booking" className="btn-primary text-center justify-center">
+                Schedule a Consultation
+                <ArrowRight className="ml-2" size={16} />
+              </a>
+              <Link to="/services" className="btn-white text-center justify-center">
+                Our Services
+              </Link>
+            </motion.div>
             {/* Scroll indicator */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -261,6 +326,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+
       </section>
 
       {/* ===== MEET OUR EXPERTS MARQUEE ===== */}
@@ -425,15 +491,15 @@ export default function Home() {
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <AnimatedSection direction="left">
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
                   src="/images/IMG_4687.PNG"
                   alt="Romy Mittler at her desk"
                   className="w-full object-cover aspect-[4/5]"
                 />
-                {/* Gold corner accents */}
-                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-gold/40 -translate-x-4 -translate-y-4" />
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-gold/40 translate-x-4 translate-y-4" />
+                {/* Gold corner accents — kept inside overflow-hidden parent */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-gold/40" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-gold/40" />
               </div>
             </AnimatedSection>
 

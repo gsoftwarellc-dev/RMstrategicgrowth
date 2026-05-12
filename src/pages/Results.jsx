@@ -90,9 +90,9 @@ const stats = [
     icon: Target,
     value: 32,
     suffix: '+',
-    label: 'Countries Covered Worldwide',
+    label: 'States Covered Nationwide',
     strength: 86,
-    insight: 'Worldwide practice perspective',
+    insight: 'Broad nationwide reach',
   },
 ]
 
