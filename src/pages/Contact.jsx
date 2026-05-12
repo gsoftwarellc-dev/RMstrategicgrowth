@@ -40,7 +40,7 @@ export default function Contact() {
       setTimeout(() => {
         const el = document.getElementById('booking')
         if (el) el.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
+      }, 500)
     }
   }, [location])
 
