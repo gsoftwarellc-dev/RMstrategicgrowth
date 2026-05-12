@@ -148,7 +148,13 @@ export default function Navbar() {
                 transition={{ delay: 0.5, duration: 0.4 }}
                 className="mt-4"
               >
-                <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary">
+                <a
+                  href="https://calendly.com/romymittler/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                  onClick={() => setIsMobileOpen(false)}
+                >
                   Schedule a Call
                 </a>
               </motion.div>

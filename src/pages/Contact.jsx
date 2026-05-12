@@ -88,12 +88,14 @@ export default function Contact() {
               Work directly with our team of aesthetic industry experts to scale your practice, boost revenue, and build a business that thrives.
             </p>
             <div className="flex flex-col gap-3">
-              <button
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary w-full justify-center"
+              <a
+                href="https://calendly.com/romymittler/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full justify-center text-center"
               >
                 Book a Call
-              </button>
+              </a>
               <a
                 href="tel:+14075755121"
                 className="flex items-center justify-center gap-2 text-sm font-medium tracking-wide"
