@@ -95,6 +95,21 @@ export default function Footer() {
               <p className="text-white/85 text-base">
                 Ready to elevate your business?
               </p>
+              <div>
+                <a
+                  href="https://www.instagram.com/rmstrategicgrowth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/85 hover:text-gold hover:border-gold transition-colors duration-300 mb-4"
+                  aria-label="Instagram"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                  </svg>
+                </a>
+              </div>
               <a
                 href="/contact#booking"
                 className="btn-outline text-xs tracking-widest inline-block"
