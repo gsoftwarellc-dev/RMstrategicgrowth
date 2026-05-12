@@ -89,9 +89,7 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <a
-              href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact#booking"
               className="hidden lg:inline-flex btn-primary text-xs tracking-widest"
             >
               Schedule a Call
@@ -150,7 +148,7 @@ export default function Navbar() {
                 transition={{ delay: 0.5, duration: 0.4 }}
                 className="mt-4"
               >
-                <a href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                <a href="/contact#booking"  className="btn-primary">
                   Schedule a Call
                 </a>
               </motion.div>

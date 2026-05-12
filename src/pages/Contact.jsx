@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { MapPin, Mail, Phone } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
@@ -22,19 +23,26 @@ const teamMembers = [
   }
 ]
 export default function Contact() {
+  const location = useLocation()
+
   useEffect(() => {
     const script = document.createElement('script')
     script.src = 'https://assets.calendly.com/assets/external/widget.js'
     script.async = true
     document.body.appendChild(script)
-
     return () => {
-      // Cleanup script when component unmounts
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
+      if (document.body.contains(script)) document.body.removeChild(script)
     }
   }, [])
+
+  useEffect(() => {
+    if (location.hash === '#booking') {
+      setTimeout(() => {
+        const el = document.getElementById('booking')
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }, [location])
 
   return (
     <>
@@ -116,14 +124,14 @@ export default function Contact() {
               Schedule Your Consultation
             </h2>
             <p className="text-black/70 max-w-xl mx-auto text-base">
-              Select a time below that works best for you.
+              You can directly call on this number <span className="font-semibold text-black">407-575-5121</span> or book a suitable time slot below.
             </p>
           </AnimatedSection>
 
           <div className="w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
             <div
               className="calendly-inline-widget w-full"
-              data-url="https://calendly.com/theriyadh75/30min?back=1&month=2026-05&hide_gdpr_banner=1"
+              data-url="https://calendly.com/romymittler/30min?back&hide_gdpr_banner=1"
               style={{ minWidth: '320px', height: '700px' }}
             />
           </div>
@@ -141,7 +149,7 @@ export default function Contact() {
             useBodoni={true}
           />
           <a
-            href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
+            href="https://calendly.com/romymittler/30min?back"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary mt-4 group"

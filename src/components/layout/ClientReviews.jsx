@@ -79,7 +79,6 @@ const testimonials = [
 export default function ClientReviews() {
   const row1 = testimonials.slice(0, 4)
   const row2 = testimonials.slice(4, 8)
-  const row3 = testimonials.slice(8, 12)
 
   const ReviewCard = ({ review }) => (
     <div className="bg-white rounded-2xl p-8 w-[350px] md:w-[450px] min-h-[320px] flex-shrink-0 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300">
@@ -169,14 +168,6 @@ export default function ClientReviews() {
           </div>
         </div>
 
-        {/* Row 3: Right to Left */}
-        <div className="w-full inline-flex flex-nowrap overflow-hidden">
-          <div className="flex gap-6 animate-scroll-left hover-pause px-3 w-max" style={{ animationDuration: '45s' }}>
-            {[...row3, ...row3, ...row3].map((review, idx) => (
-              <ReviewCard key={idx} review={review} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

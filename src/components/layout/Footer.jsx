@@ -96,9 +96,7 @@ export default function Footer() {
                 Ready to elevate your business?
               </p>
               <a
-                href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact#booking"
                 className="btn-outline text-xs tracking-widest inline-block"
               >
                 Schedule a Call

@@ -236,7 +236,7 @@ export default function Home() {
                 transition={{ delay: 1, duration: 0.6 }}
                 className="flex flex-col sm:flex-row flex-wrap gap-4 mt-6"
               >
-                <a href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05" target="_blank" rel="noopener noreferrer" className="btn-primary w-full sm:w-auto text-center justify-center">
+                <a href="/contact#booking"  className="btn-primary w-full sm:w-auto text-center justify-center">
                   Schedule a Consultation
                   <ArrowRight className="ml-2" size={16} />
                 </a>
@@ -274,9 +274,7 @@ export default function Home() {
             showLine={false}
           />
           <a
-            href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact#booking"
             className="btn-primary mt-4 group"
           >
             Book a Call
@@ -284,9 +282,9 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="flex justify-center gap-6 px-4 mt-10">
+        <div className="flex flex-col lg:flex-row justify-center gap-6 px-4 mt-10">
           {teamMembers.map((member, i) => (
-            <div key={i} className="relative flex-1 min-w-0 max-w-[420px] h-[550px] rounded-[2rem] overflow-hidden group cursor-default">
+            <div key={i} className="relative w-full lg:flex-1 lg:min-w-0 lg:max-w-[420px] h-[520px] lg:h-[550px] rounded-[2rem] overflow-hidden group cursor-default">
               <img
                 src={member.image}
                 alt={member.name}
@@ -671,7 +669,7 @@ export default function Home() {
               positioned for long term success.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05" target="_blank" rel="noopener noreferrer" className="btn-primary w-full sm:w-auto justify-center text-center">
+              <a href="/contact#booking"  className="btn-primary w-full sm:w-auto justify-center text-center">
                 Schedule a Consultation
                 <ArrowRight className="ml-2" size={16} />
               </a>

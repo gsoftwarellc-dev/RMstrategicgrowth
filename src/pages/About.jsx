@@ -106,10 +106,8 @@ export default function About() {
             </h1>
             <div className="mt-10">
               <a
-                href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary group inline-flex w-full sm:w-auto justify-center"
+                href="/contact#booking"
+                className="btn-primary group inline-flex justify-center"
               >
                 Book a Call
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
@@ -323,7 +321,7 @@ export default function About() {
             <h2 className="text-white mb-8 max-w-xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
               Ready to Work Together?
             </h2>
-            <a href="https://calendly.com/theriyadh75/30min?back=1&month=2026-05" target="_blank" rel="noopener noreferrer" className="btn-primary w-full sm:w-auto justify-center text-center">
+            <a href="/contact#booking"  className="btn-primary w-full sm:w-auto justify-center text-center">
               Schedule a Consultation
               <ArrowRight className="ml-2" size={16} />
             </a>
