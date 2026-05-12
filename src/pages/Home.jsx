@@ -284,9 +284,9 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="flex animate-marquee-fast gap-6 whitespace-nowrap px-4 w-max hover:animation-pause mt-10">
-          {[...teamMembers, ...teamMembers].map((member, i) => (
-            <div key={i} className="relative w-[320px] md:w-[420px] h-[550px] rounded-[2rem] overflow-hidden flex-shrink-0 group cursor-default">
+        <div className="flex justify-center gap-6 px-4 mt-10">
+          {teamMembers.map((member, i) => (
+            <div key={i} className="relative flex-1 min-w-0 max-w-[420px] h-[550px] rounded-[2rem] overflow-hidden group cursor-default">
               <img
                 src={member.image}
                 alt={member.name}
@@ -308,18 +308,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <style>{`
-          @keyframes marquee-fast {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee-fast {
-            animation: marquee-fast 35s linear infinite;
-          }
-          .animate-marquee-fast:hover {
-            animation-play-state: paused;
-          }
-        `}</style>
       </section>
 
       {/* ===== TAGLINE BANNER ===== */}
@@ -528,7 +516,7 @@ export default function Home() {
           <img
             src="/images/Group shot.PNG"
             alt="RM Strategic Growth Team"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-black/70" />
         </div>

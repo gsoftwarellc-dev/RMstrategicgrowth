@@ -72,7 +72,7 @@ export default function Navbar() {
                   className={`relative text-sm font-medium tracking-widest uppercase transition-colors duration-300 ${
                     location.pathname === link.path
                       ? 'text-gold'
-                      : 'text-charcoal/70 hover:text-black'
+                      : 'text-black hover:text-black'
                   }`}
                 >
                   {link.name}
