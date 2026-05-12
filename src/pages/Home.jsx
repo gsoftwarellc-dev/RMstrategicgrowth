@@ -218,7 +218,7 @@ export default function Home() {
               transition={{ delay: 0.9, duration: 0.5 }}
               className="flex flex-col gap-3"
             >
-              <a href="/contact#booking" className="btn-primary w-full text-center justify-center">
+              <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer" className="btn-primary w-full text-center justify-center">
                 Schedule a Consultation
                 <ArrowRight className="ml-2" size={16} />
               </a>
@@ -303,7 +303,7 @@ export default function Home() {
               transition={{ delay: 1, duration: 0.6 }}
               className="flex flex-row flex-wrap gap-4"
             >
-              <a href="/contact#booking" className="btn-primary text-center justify-center">
+              <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer" className="btn-primary text-center justify-center">
                 Schedule a Consultation
                 <ArrowRight className="ml-2" size={16} />
               </a>
@@ -340,7 +340,7 @@ export default function Home() {
             showLine={false}
           />
           <a
-            href="/contact#booking"
+            href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
             className="btn-primary mt-4 group"
           >
             Book a Call
@@ -735,7 +735,7 @@ export default function Home() {
               positioned for long term success.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/contact#booking"  className="btn-primary w-full sm:w-auto justify-center text-center">
+              <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
                 Schedule a Consultation
                 <ArrowRight className="ml-2" size={16} />
               </a>

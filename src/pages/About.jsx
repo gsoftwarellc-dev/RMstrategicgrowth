@@ -106,7 +106,7 @@ export default function About() {
             </h1>
             <div className="mt-10">
               <a
-                href="/contact#booking"
+                href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                 className="btn-primary group inline-flex justify-center"
               >
                 Book a Call
@@ -321,7 +321,7 @@ export default function About() {
             <h2 className="text-white mb-8 max-w-xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
               Ready to Work Together?
             </h2>
-            <a href="/contact#booking"  className="btn-primary w-full sm:w-auto justify-center text-center">
+            <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
               Schedule a Consultation
               <ArrowRight className="ml-2" size={16} />
             </a>

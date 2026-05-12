@@ -227,7 +227,7 @@ export default function Services() {
             </p>
             <div className="mt-10">
               <a
-                href="/contact#booking"
+                href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                 className="btn-primary group inline-flex w-full sm:w-auto justify-center"
               >
                 Book a Call
@@ -380,7 +380,7 @@ export default function Services() {
               Whether you are launching a new practice or preparing for future expansion,
               we provide strategic guidance designed specifically for the modern aesthetics industry.
             </p>
-            <a href="/contact#booking"  className="btn-primary w-full sm:w-auto justify-center text-center">
+            <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
               Schedule a Consultation
               <ArrowRight className="ml-2" size={16} />
             </a>

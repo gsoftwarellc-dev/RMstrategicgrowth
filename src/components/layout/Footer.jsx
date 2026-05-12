@@ -111,7 +111,7 @@ export default function Footer() {
                 </a>
               </div>
               <a
-                href="/contact#booking"
+                href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                 className="btn-outline text-xs tracking-widest inline-block"
               >
                 Schedule a Call

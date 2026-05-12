@@ -5,7 +5,7 @@ export default function FloatingCTA() {
     <div className="fixed bottom-6 right-6 z-50 lg:bottom-10 lg:right-10 flex flex-col items-end gap-3 pointer-events-none">
       <div className="pointer-events-auto">
         <a
-          href="/contact#booking"
+          href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
           className="btn-primary flex items-center gap-2 shadow-2xl hover:scale-105 transition-transform duration-300"
           style={{ padding: '16px 24px', borderRadius: '50px' }}
         >

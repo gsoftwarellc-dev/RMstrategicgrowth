@@ -179,7 +179,7 @@ export default function Results() {
               </p>
               <div className="mt-10">
                 <a
-                  href="/contact#booking"
+                  href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                   className="btn-primary group inline-flex w-full sm:w-auto justify-center"
                 >
                   Book a Call
@@ -286,7 +286,7 @@ export default function Results() {
                   </div>
                   <div className="mt-10">
                     <a
-                      href="/contact#booking"
+                      href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                       className="btn-primary group inline-flex w-full sm:w-auto justify-center"
                     >
                       Book Now
@@ -520,7 +520,7 @@ export default function Results() {
               Schedule a consultation to discuss how we can help your aesthetic business
               grow smarter, operate stronger, and scale profitably.
             </p>
-            <a href="/contact#booking"  className="btn-primary w-full sm:w-auto justify-center text-center">
+            <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
               Schedule a Consultation
               <ArrowRight className="ml-2" size={16} />
             </a>
