@@ -47,8 +47,8 @@ export default function Contact() {
       </Helmet>
 
       {/* ===== HERO BOOKING BANNER ===== */}
-      <section className="pt-32 pb-0 bg-[#0A0A0A] overflow-hidden">
-        <div className="section-container">
+      <section className="bg-[#0A0A0A] overflow-hidden min-h-screen flex items-center">
+        <div className="section-container w-full">
           <div className="flex flex-col lg:flex-row items-center gap-12">
 
             {/* LEFT — copy + CTA */}
