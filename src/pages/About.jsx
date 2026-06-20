@@ -6,6 +6,7 @@ import SectionHeading from '../components/ui/SectionHeading'
 
 const teamMembers = [
   {
+    slug: 'romy-mittler',
     name: 'Romy Mittler',
     role: 'Founder & CEO',
     subtitle: 'Strategic Growth Director',
@@ -28,6 +29,7 @@ const teamMembers = [
     ],
   },
   {
+    slug: 'amanda-lewis',
     name: 'Amanda Lewis',
     role: 'Clinical Director',
     subtitle: 'Master Injector Trainer',
@@ -45,26 +47,6 @@ const teamMembers = [
       'Patient Care Standards',
       'Provider Education',
       'Treatment Protocols',
-    ],
-  },
-  {
-    name: 'Emily Shea',
-    role: 'Director of Industry Relations',
-    subtitle: 'Practice Development',
-    image: '/images/Emily.PNG',
-    bio: [
-      'With a strong foundation in leadership, operations, and aesthetic medicine, Emily Shea brings a rare combination of clinical industry expertise and strategic business insight to the world of medical aesthetics.',
-      'After serving five years in Search and Rescue Operations with the U.S. Coast Guard, Emily earned her Bachelor of Science in Accounting from the University of Tampa and her Master of Science in Management from the University of Miami. She went on to build an impressive 8 year career in aesthetic medical device and pharmaceutical sales.',
-      'Throughout her career, Emily has managed multi state territories across the East Coast, overseeing operations in 26 states and Puerto Rico while supporting more than 1,000 medical aesthetic practices.',
-      'Emily works closely with clients to identify growth opportunities, improve operational efficiency, strengthen team performance, and elevate overall patient experience — helping practices scale with both profitability and excellence in mind.',
-    ],
-    expertise: [
-      'Business Development',
-      'Sales Strategy',
-      'Vendor Relations',
-      'Partnership Negotiations',
-      'Operational Growth',
-      'Staff Training',
     ],
   },
 ]
@@ -109,7 +91,7 @@ export default function About() {
                 href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                 className="btn-primary group inline-flex justify-center"
               >
-                Book a Call
+                Schedule A Free Discovery Call
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
               </a>
             </div>
@@ -130,7 +112,8 @@ export default function About() {
             {teamMembers.map((member, index) => (
               <AnimatedSection key={member.name}>
                 <div
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 lg:gap-16 items-start ${
+                  id={member.slug}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 lg:gap-16 items-start scroll-mt-28 ${
                     index % 2 === 1 ? 'lg:direction-rtl' : ''
                   }`}
                 >
@@ -188,6 +171,47 @@ export default function About() {
               </AnimatedSection>
             ))}
           </div>
+
+          <AnimatedSection className="mt-32">
+            <div id="our-team" className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center scroll-mt-28">
+              <div className="relative group order-2 lg:order-1">
+                <img
+                  src="/images/group.PNG"
+                  alt="RM Strategic Growth Team"
+                  className="w-full object-cover aspect-[4/5]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+              <div className="order-1 lg:order-2">
+                <p className="text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-2">
+                  Our Team
+                </p>
+                <div className="gold-line mb-6" />
+                <h3 className="text-2xl lg:text-3xl mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Backed by a Dedicated Team
+                </h3>
+                <div className="space-y-4">
+                  <p className="text-gray-warm text-base lg:text-lg leading-relaxed">
+                    Our advisory team is supported by a network of experienced industry specialists
+                    who bring expertise across operations, clinical excellence, patient experience,
+                    leadership development, sales strategy, branding, marketing, and business growth.
+                  </p>
+                  <p className="text-gray-warm text-base lg:text-lg leading-relaxed">
+                    This collaborative approach allows us to provide clients with access to
+                    specialized knowledge and real-world experience from multiple areas of the
+                    aesthetic industry, ensuring recommendations are practical, actionable, and
+                    aligned with the unique needs of each business.
+                  </p>
+                  <p className="text-gray-warm text-base lg:text-lg leading-relaxed">
+                    Together, our team combines founder-led operational experience, clinical
+                    insight, revenue optimization, patient retention strategies, and growth
+                    execution to help aesthetic businesses increase profitability, improve
+                    performance, and build sustainable long term success.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -322,7 +346,7 @@ export default function About() {
               Ready to Work Together?
             </h2>
             <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
-              Schedule a Consultation
+              Schedule A Free Discovery Call
               <ArrowRight className="ml-2" size={16} />
             </a>
           </AnimatedSection>

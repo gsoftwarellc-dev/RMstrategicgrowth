@@ -13,6 +13,8 @@ import {
   Settings,
   Sparkles,
   ArrowRight,
+  Newspaper,
+  Quote,
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SectionHeading from '../components/ui/SectionHeading'
@@ -20,19 +22,22 @@ import ClientReviews from '../components/layout/ClientReviews'
 
 const teamMembers = [
   {
+    slug: 'romy-mittler',
     name: 'Romy Mittler',
     image: '/images/F05D89D5-F04B-4430-9108-B88E73820A05.PNG',
     desc: 'Founder & CEO. Over 17 years of firsthand experience building and operating successful aesthetic businesses.',
   },
   {
+    slug: 'amanda-lewis',
     name: 'Amanda Lewis',
     image: '/images/Amanda.PNG',
     desc: 'Clinical Director and master injector trainer with advanced expertise in aesthetic medicine.',
   },
   {
-    name: 'Emily Shea',
-    image: '/images/Emily.PNG',
-    desc: 'Director of Industry Relations with extensive practice development and growth strategy expertise.',
+    slug: 'our-team',
+    name: 'Our Team',
+    image: '/images/group.PNG',
+    desc: 'Backed by a dedicated team of aesthetic industry specialists working behind the scenes to support every engagement.',
   }
 ]
 
@@ -111,19 +116,12 @@ const heroSlides = [
   {
     image: '/images/hero1.png',
     imageClass: 'object-contain',
-    title1: 'Scale With ',
-    titleItalic: 'Strategy,',
-    title2: 'Lead With Confidence',
-    description: 'Helping aesthetic businesses scale smarter, strengthen operations, elevate patient experience, and build profitable brands designed for long-term growth.'
+    title1: 'We Help Aesthetic Businesses ',
+    titleItalic: 'Make More Money',
+    title2: '',
+    description: 'Increase monthly revenue, improve profitability, maximize patient value, and build a stronger business without wasting thousands on ineffective marketing.',
+    credibility: 'Built by a former medspa owner who successfully grew and sold a multi seven-figure practice.',
   },
-  {
-    image: '/images/C8875437-6B96-4B17-A8C3-E3E109642FE2.PNG',
-    imageClass: 'object-cover object-top',
-    title1: 'Transform Your ',
-    titleItalic: 'Practice',
-    title2: 'From the Inside Out',
-    description: 'Strategic advisory, powerful operational systems, and team leadership frameworks designed exclusively for the modern aesthetic and wellness brand.'
-  }
 ]
 
 export default function Home() {
@@ -141,10 +139,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>RM Strategic Growth — Strategic Consulting for MedSpa & Aesthetic Businesses</title>
+        <title>RM Strategic Growth — We Help Aesthetic Businesses Make More Money</title>
         <meta
           name="description"
-          content="RM Strategic Growth helps aesthetic businesses scale smarter, strengthen operations, elevate patient experience, and build profitable brands designed for long-term growth."
+          content="RM Strategic Growth helps aesthetic businesses increase revenue, improve profitability, and maximize patient value. Built by a former medspa owner who grew and sold a multi seven-figure practice."
         />
       </Helmet>
 
@@ -204,12 +202,17 @@ export default function Home() {
                   <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
                     {currentSlideData.titleItalic}
                   </span>
-                  <br />
+                  {currentSlideData.title2 && <br />}
                   {currentSlideData.title2}
                 </h1>
-                <p className="text-white/80 text-sm leading-relaxed mb-6 max-w-sm">
+                <p className="text-white/80 text-sm leading-relaxed mb-3 max-w-sm">
                   {currentSlideData.description}
                 </p>
+                {currentSlideData.credibility && (
+                  <p className="text-gold/90 text-xs font-semibold tracking-wide leading-relaxed mb-6 max-w-sm">
+                    {currentSlideData.credibility}
+                  </p>
+                )}
               </motion.div>
             </AnimatePresence>
             <motion.div
@@ -219,7 +222,7 @@ export default function Home() {
               className="flex flex-col gap-3"
             >
               <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer" className="btn-primary w-full text-center justify-center">
-                Schedule a Consultation
+                Schedule A Free Discovery Call
                 <ArrowRight className="ml-2" size={16} />
               </a>
               <Link to="/services" className="btn-white w-full text-center justify-center">
@@ -289,12 +292,17 @@ export default function Home() {
                   <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
                     {currentSlideData.titleItalic}
                   </span>
-                  <br />
+                  {currentSlideData.title2 && <br />}
                   {currentSlideData.title2}
                 </h1>
-                <p className="text-white/85 text-xl leading-relaxed mb-10 max-w-lg">
+                <p className="text-white/85 text-xl leading-relaxed mb-4 max-w-lg">
                   {currentSlideData.description}
                 </p>
+                {currentSlideData.credibility && (
+                  <p className="text-gold/90 text-base font-semibold tracking-wide leading-relaxed mb-10 max-w-lg">
+                    {currentSlideData.credibility}
+                  </p>
+                )}
               </motion.div>
             </AnimatePresence>
             <motion.div
@@ -304,7 +312,7 @@ export default function Home() {
               className="flex flex-row flex-wrap gap-4"
             >
               <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer" className="btn-primary text-center justify-center">
-                Schedule a Consultation
+                Schedule A Free Discovery Call
                 <ArrowRight className="ml-2" size={16} />
               </a>
               <Link to="/services" className="btn-white text-center justify-center">
@@ -329,6 +337,68 @@ export default function Home() {
 
       </section>
 
+      {/* ===== FEATURED IN (PRESS) ===== */}
+      <section className="relative py-16 lg:py-28 bg-[#0A0A0A] overflow-hidden">
+        {/* Soft gold glow accents */}
+        <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 section-container">
+          <SectionHeading
+            subtitle="Featured In"
+            title="As Seen In Authority Magazine"
+            description="Romy Mittler sits down with Authority Magazine to share the hard-won lessons behind building a multi-seven-figure aesthetic business."
+            light={true}
+          />
+
+          <AnimatedSection>
+            <a
+              href="https://medium.com/authority-magazine/romy-mittler-of-rm-strategic-growth-group-5-things-i-wish-someone-told-me-before-i-became-a-f8f853383b0e"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block max-w-4xl mx-auto"
+            >
+              <div className="relative grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 lg:gap-10 items-center bg-white/[0.04] border border-white/10 rounded-[1.75rem] p-8 lg:p-12 transition-all duration-500 hover:border-gold/50 hover:bg-white/[0.06] hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
+                {/* Publication badge */}
+                <div className="flex flex-col items-center md:items-start">
+                  <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mb-4 transition-colors duration-500 group-hover:bg-gold/20">
+                    <Newspaper size={32} className="text-gold" />
+                  </div>
+                  <p className="text-gold text-xs font-semibold tracking-[0.22em] uppercase text-center md:text-left">
+                    Authority
+                    <br />
+                    Magazine
+                  </p>
+                </div>
+
+                {/* Content */}
+                <div className="text-center md:text-left">
+                  <Quote size={28} className="text-gold/40 mx-auto md:mx-0 mb-4" />
+                  <h3
+                    className="text-white text-2xl lg:text-[1.85rem] leading-snug mb-4 transition-colors duration-300 group-hover:text-gold"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    "5 Things I Wish Someone Told Me Before I Became A Founder"
+                  </h3>
+                  <p className="text-white/75 text-base leading-relaxed mb-6">
+                    From a COVID-19 shutdown to a fraud incident, Romy reflects on the
+                    adaptability and integrity that turned early setbacks into sustainable,
+                    long-term growth, and the advice she wishes she had from the start.
+                  </p>
+                  <span className="inline-flex items-center text-gold font-semibold text-sm tracking-[0.12em] uppercase">
+                    Read the Full Feature
+                    <ArrowRight
+                      className="ml-2 transition-transform duration-300 group-hover:translate-x-1.5"
+                      size={16}
+                    />
+                  </span>
+                </div>
+              </div>
+            </a>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ===== MEET OUR EXPERTS MARQUEE ===== */}
       <section className="pt-4 pb-16 bg-[#0A0A0A] overflow-hidden">
         <div className="section-container mb-4 flex flex-col items-center">
@@ -343,34 +413,42 @@ export default function Home() {
             href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
             className="btn-primary mt-4 group"
           >
-            Book a Call
+            Schedule A Free Discovery Call
             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
           </a>
         </div>
 
         <div className="flex flex-col lg:flex-row justify-center gap-6 px-4 mt-10">
-          {teamMembers.map((member, i) => (
-            <div key={i} className="relative w-full lg:flex-1 lg:min-w-0 lg:max-w-[420px] h-[520px] lg:h-[550px] rounded-[2rem] overflow-hidden group cursor-default">
-              <img
-                src={member.image}
-                alt={member.name}
-                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+          {teamMembers.map((member, i) => {
+            const CardTag = member.slug ? Link : 'div'
+            const cardProps = member.slug ? { to: `/about#${member.slug}` } : {}
+            return (
+              <CardTag
+                key={i}
+                {...cardProps}
+                className={`relative w-full lg:flex-1 lg:min-w-0 lg:max-w-[420px] h-[520px] lg:h-[550px] rounded-[2rem] overflow-hidden group block ${member.slug ? 'cursor-pointer' : 'cursor-default'}`}
+              >
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
 
-              <div className="absolute bottom-0 left-0 p-8 w-full whitespace-normal transform transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md border border-white/30 shadow-lg">
-                    <span className="text-white font-bold text-xs" style={{ fontFamily: 'var(--font-heading)' }}>RM</span>
+                <div className="absolute bottom-0 left-0 p-8 w-full whitespace-normal transform transition-transform duration-500 group-hover:-translate-y-2">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md border border-white/30 shadow-lg">
+                      <span className="text-white font-bold text-xs" style={{ fontFamily: 'var(--font-heading)' }}>RM</span>
+                    </div>
+                    <h3 className="text-white text-2xl font-bold tracking-normal" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</h3>
                   </div>
-                  <h3 className="text-white text-2xl font-bold tracking-normal" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</h3>
+                  <p className="text-white/85 text-base leading-relaxed line-clamp-3">
+                    {member.desc}
+                  </p>
                 </div>
-                <p className="text-white/85 text-base leading-relaxed line-clamp-3">
-                  {member.desc}
-                </p>
-              </div>
-            </div>
-          ))}
+              </CardTag>
+            )
+          })}
         </div>
       </section>
 
@@ -736,7 +814,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
-                Schedule a Consultation
+                Schedule A Free Discovery Call
                 <ArrowRight className="ml-2" size={16} />
               </a>
               <Link to="/about" className="btn-white">

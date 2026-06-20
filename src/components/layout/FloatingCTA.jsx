@@ -11,7 +11,7 @@ export default function FloatingCTA() {
         >
           <Calendar size={20} />
           <span className="font-semibold tracking-wider text-sm hidden sm:inline-block">
-            Schedule a Consultation
+            Schedule A Free Discovery Call
           </span>
           <span className="font-semibold tracking-wider text-sm sm:hidden">
             Book

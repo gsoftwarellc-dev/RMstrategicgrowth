@@ -14,12 +14,10 @@ const footerLinks = [
   {
     title: 'Services',
     links: [
-      { name: 'Business Growth Strategy', path: '/services' },
-      { name: 'Operations & Systems', path: '/services' },
-      { name: 'Team Leadership & Culture', path: '/services' },
-      { name: 'Brand Positioning', path: '/services' },
-      { name: 'New Practice Launch', path: '/services' },
-      { name: 'Founder Advisory', path: '/services' },
+      { name: 'Increase Revenue', path: '/services' },
+      { name: 'Improve Profitability', path: '/services' },
+      { name: 'Increase Patient Lifetime Value', path: '/services' },
+      { name: 'Strengthen Operations', path: '/services' },
     ],
   },
 ]
@@ -95,12 +93,12 @@ export default function Footer() {
               <p className="text-white/85 text-base">
                 Ready to elevate your business?
               </p>
-              <div>
+              <div className="flex items-center gap-3 mb-4">
                 <a
                   href="https://www.instagram.com/rmstrategicgrowth"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/85 hover:text-gold hover:border-gold transition-colors duration-300 mb-4"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/85 hover:text-gold hover:border-gold transition-colors duration-300"
                   aria-label="Instagram"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -109,12 +107,35 @@ export default function Footer() {
                     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                   </svg>
                 </a>
+                <a
+                  href="https://www.facebook.com/share/18p2nQt3yo/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/85 hover:text-gold hover:border-gold transition-colors duration-300"
+                  aria-label="Facebook"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.youtube.com/@RMStrategicGrowth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/85 hover:text-gold hover:border-gold transition-colors duration-300"
+                  aria-label="YouTube"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+                    <path d="m10 15 5-3-5-3z" fill="currentColor"/>
+                  </svg>
+                </a>
               </div>
               <a
                 href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                 className="btn-outline text-xs tracking-widest inline-block"
               >
-                Schedule a Call
+                Schedule A Free Discovery Call
               </a>
             </div>
           </div>

@@ -17,9 +17,9 @@ const teamMembers = [
     desc: 'Clinical Director and master injector trainer with advanced expertise in aesthetic medicine.',
   },
   {
-    name: 'Emily Shea',
-    image: '/images/Emily.PNG',
-    desc: 'Director of Industry Relations with extensive practice development and growth strategy expertise.',
+    name: 'Our Team',
+    image: '/images/group.PNG',
+    desc: 'Backed by a dedicated team of aesthetic industry specialists working behind the scenes to support every engagement.',
   }
 ]
 export default function Contact() {
@@ -94,7 +94,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="btn-primary w-full justify-center text-center"
               >
-                Book a Call
+                Schedule A Free Discovery Call
               </a>
               <a
                 href="tel:+14075755121"
@@ -137,7 +137,7 @@ export default function Contact() {
                     onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
                     className="btn-primary justify-center"
                   >
-                    Book a Call
+                    Schedule A Free Discovery Call
                   </button>
                   <a
                     href="tel:+14075755121"
@@ -205,7 +205,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="btn-primary mt-4 group"
           >
-            Book a Call
+            Schedule A Free Discovery Call
             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
           </a>
         </div>

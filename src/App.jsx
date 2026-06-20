@@ -14,7 +14,24 @@ function ScrollToTop() {
   useEffect(() => {
     if (!hash) {
       window.scrollTo(0, 0)
+      return
     }
+    const id = hash.slice(1)
+    let attempts = 0
+    let frameId
+    const tryScroll = () => {
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+      attempts += 1
+      if (attempts < 60) {
+        frameId = requestAnimationFrame(tryScroll)
+      }
+    }
+    frameId = requestAnimationFrame(tryScroll)
+    return () => cancelAnimationFrame(frameId)
   }, [pathname, hash])
   return null
 }

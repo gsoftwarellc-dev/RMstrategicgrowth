@@ -1,188 +1,136 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import {
   TrendingUp,
+  DollarSign,
+  Heart,
   Settings,
-  Users,
-  Sparkles,
-  Rocket,
-  Shield,
   ArrowRight,
   CheckCircle,
+  ChevronDown,
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SectionHeading from '../components/ui/SectionHeading'
 
+const moneyStats = [
+  { stat: '78%', label: 'of consumers would be more satisfied following a long-term treatment plan with their provider.' },
+  { stat: '62%', label: 'find multiple aesthetic treatments appealing.' },
+  { stat: '59%', label: 'are open to a structured multi-treatment approach.' },
+]
+
 const services = [
   {
     icon: TrendingUp,
-    title: 'Business Growth Strategy',
-    subtitle: 'Strategic planning designed to help practices grow with intention, profitability, and operational clarity.',
+    title: 'Increase Revenue',
+    subtitle: 'Convert more consultations into paying patients and generate more revenue from the leads you already have.',
     items: [
-      'Revenue optimization',
-      'Pricing strategy',
-      'Service mix evaluation',
-      'Profitability analysis',
-      'Business structure',
-      'Scaling strategy',
-      'Operational bottlenecks',
-      'Growth planning',
-      'Expansion readiness',
+      'Convert more consultations into paying patients',
+      'Improve treatment plan acceptance',
+      'Increase average patient spend',
+      'Generate more revenue from existing leads',
+    ],
+  },
+  {
+    icon: DollarSign,
+    title: 'Improve Profitability',
+    subtitle: 'Revenue matters. Profitability matters more.',
+    items: [
+      'Identify profit leaks',
+      'Optimize pricing',
+      'Improve operational efficiency',
+      'Increase margins',
+    ],
+  },
+  {
+    icon: Heart,
+    title: 'Increase Patient Lifetime Value',
+    subtitle: 'Turn one-time patients into long term relationships.',
+    items: [
+      'Improve retention',
+      'Increase membership participation',
+      'Reactivation campaigns',
+      'Follow-up systems',
+      'Long-term patient relationships',
     ],
   },
   {
     icon: Settings,
-    title: 'Operations & Systems',
-    subtitle: 'Strong businesses require strong operational foundations.',
+    title: 'Strengthen Operations',
+    subtitle: 'Build the foundation that lets revenue growth scale sustainably.',
     items: [
-      'Operational workflows',
-      'Front desk systems',
-      'Patient journey',
-      'Scheduling efficiency',
-      'Consultation flow',
-      'Communication systems',
-      'Accountability structure',
-      'Standard operating procedures',
-      'Internal organization',
-    ],
-  },
-  {
-    icon: Users,
-    title: 'Team Leadership & Culture',
-    subtitle: 'The success of any aesthetic business is deeply connected to the quality of its leadership and culture.',
-    items: [
-      'Management structure',
+      'KPI tracking',
+      'Team accountability',
       'Leadership development',
-      'Staff accountability',
-      'Communication',
-      'Team dynamics',
-      'Workplace culture',
-      'Hiring strategy',
-      'Employee expectations',
-      'Operational standards',
-    ],
-  },
-  {
-    icon: Sparkles,
-    title: 'Brand Positioning & Patient Experience',
-    subtitle: 'Luxury patient experience goes beyond aesthetics alone.',
-    items: [
-      'Brand identity',
-      'Client experience',
-      'Consultation process',
-      'Retention strategy',
-      'In-office presentation',
-      'Communication standards',
-      'Reputation positioning',
-      'Patient touchpoints',
-    ],
-  },
-  {
-    icon: Rocket,
-    title: 'New Practice Launch Consulting',
-    subtitle: 'Launching a medspa or aesthetic brand involves hundreds of strategic and operational decisions.',
-    items: [
-      'Business planning',
-      'Launch preparation',
-      'Operational setup',
-      'Staffing guidance',
-      'Growth strategy',
-      'Branding direction',
-      'Patient experience development',
-      'Workflow implementation',
-    ],
-  },
-  {
-    icon: Shield,
-    title: 'Founder Advisory & Mentorship',
-    subtitle: 'Confidential strategic support for founders navigating complex business challenges.',
-    items: [
-      'Growth challenges',
-      'Operational stress',
-      'Leadership decisions',
-      'Team restructuring',
-      'Scaling',
-      'Burnout',
-      'Expansion',
-      'Long-term exit planning',
+      'Systems and processes',
+      'Scalable growth foundations',
     ],
   },
 ]
 
-function serviceId(title) {
-  return title
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-}
-
-function ServiceCard({ service, index }) {
+function ServiceAccordionItem({ service, isOpen, onToggle }) {
   return (
-    <AnimatedSection delay={index * 0.08}>
-      <div id={serviceId(service.title)} className="relative bg-[#0f0f0f] border border-white/10 overflow-hidden group h-full scroll-mt-28">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-70" />
+    <div className="border border-white/10 bg-[#0f0f0f]">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="w-full flex items-center gap-4 sm:gap-5 p-5 sm:p-6 text-left"
+      >
+        <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gold/10 border border-gold/30 flex-shrink-0">
+          <service.icon className="text-gold" size={20} />
+        </div>
+        <h3
+          className="flex-1 text-white text-lg sm:text-xl leading-snug"
+          style={{ fontFamily: 'var(--font-heading)' }}
+        >
+          {service.title}
+        </h3>
+        <ChevronDown
+          className={`text-gold flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          size={20}
+        />
+      </button>
 
-        <div className="p-6 lg:p-8 h-full flex flex-col">
-          <div className="flex items-start gap-5 mb-5">
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/10 border border-gold/30 flex-shrink-0">
-              <service.icon className="text-gold" size={22} />
-            </div>
-
-            <div>
-              <p className="text-gold text-[10px] font-semibold tracking-[0.24em] uppercase mb-2">
-                Service Area
-              </p>
-              <h3
-                className="text-white text-xl lg:text-2xl leading-snug"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {service.title}
-              </h3>
-            </div>
-          </div>
-
-          <p className="text-white text-base leading-relaxed mb-6">
-            {service.subtitle}
-          </p>
-
-          <div className="border-t border-white/10 pt-5 mt-auto">
-            <p className="text-gold text-[10px] font-semibold tracking-[0.24em] uppercase mb-4">
-              Areas of Focus
+      <div
+        className={`grid transition-all duration-300 ease-out ${
+          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
+        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 sm:px-6 pb-6 sm:pb-8 pl-[4.5rem] sm:pl-[5.25rem]">
+            <p className="text-white/85 text-sm sm:text-base leading-relaxed mb-5">
+              {service.subtitle}
             </p>
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {service.items.map((item) => (
-                <div key={item} className="flex items-start gap-3">
+                <div key={item} className="flex items-start gap-2.5">
                   <CheckCircle size={14} className="text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-white text-sm leading-relaxed">{item}</span>
+                  <span className="text-white/90 text-sm leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </AnimatedSection>
+    </div>
   )
 }
 
-function ServiceNavigation() {
+function ServicesAccordion() {
+  const [openIndex, setOpenIndex] = useState(0)
+
   return (
-    <AnimatedSection>
-      <div className="max-w-5xl mx-auto mb-10 lg:mb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {services.map((service) => (
-            <a
-              key={service.title}
-              href={`#${serviceId(service.title)}`}
-              className="flex items-center gap-3 border border-white/10 bg-white/[0.03] px-4 py-3 text-white/85 hover:border-gold/40 hover:text-white transition-colors duration-300"
-            >
-              <service.icon className="text-gold flex-shrink-0" size={17} />
-              <span className="text-sm font-medium">{service.title}</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </AnimatedSection>
+    <div className="max-w-3xl mx-auto space-y-3">
+      {services.map((service, index) => (
+        <ServiceAccordionItem
+          key={service.title}
+          service={service}
+          isOpen={openIndex === index}
+          onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
+        />
+      ))}
+    </div>
   )
 }
 
@@ -190,76 +138,120 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>Services — RM Strategic Growth | MedSpa & Aesthetic Consulting</title>
+        <title>Services — RM Strategic Growth | How We Help You Make More Money</title>
         <meta
           name="description"
-          content="Strategic advisory services for medspas, aesthetic clinics, and wellness brands — including business growth strategy, operations, team leadership, brand positioning, and founder mentorship."
+          content="We help medspas and aesthetic practices increase revenue, improve profitability, increase patient lifetime value, and strengthen operations — generating more money from the patients and leads they already have."
         />
       </Helmet>
 
       {/* ===== HERO ===== */}
-      <section className="relative h-screen flex items-center justify-center bg-black overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/C8875437-6B96-4B17-A8C3-E3E109642FE2.PNG"
-            alt="RM Strategic Growth Services"
-            className="w-full h-full object-cover object-top opacity-50"
-          />
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-        </div>
-
-        <div className="relative z-10 section-container py-24 lg:py-32 text-center">
+      <section className="bg-black pt-32 pb-12 lg:pt-40 lg:pb-16">
+        <div className="section-container text-center">
           <AnimatedSection>
             <p className="text-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4">
               Consulting Services
             </p>
-            <div className="gold-line-center mb-8" />
-            <h1 className="text-white max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
-              Strategic Advisory for{' '}
+            <h1 className="text-white max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
+              How We Help You{' '}
               <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
-                Modern Aesthetic
-              </span>{' '}
-              Businesses
+                Make More Money
+              </span>
             </h1>
-            <p className="text-white text-base mt-6 max-w-2xl mx-auto leading-relaxed">
-              Our services are customized to the unique needs of each business and may be provided virtually or onsite.
+            <p className="text-white/85 text-base mt-5 max-w-xl mx-auto leading-relaxed">
+              Four focus areas. Customized to your business, delivered virtually or onsite.
             </p>
-            <div className="mt-10">
+            <div className="mt-8">
               <a
                 href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                 className="btn-primary group inline-flex w-full sm:w-auto justify-center"
               >
-                Book a Call
+                Schedule A Free Discovery Call
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
               </a>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <div className="flex flex-wrap justify-center gap-2.5 mt-10 max-w-4xl mx-auto">
+              {services.map((service) => (
+                <span
+                  key={service.title}
+                  className="flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2 text-white/80 text-sm"
+                >
+                  <service.icon className="text-gold flex-shrink-0" size={15} />
+                  {service.title}
+                </span>
+              ))}
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ===== SERVICES CARDS ===== */}
-      <section className="py-16 lg:py-32 bg-[#080808]">
+      {/* ===== WHY MEDSPAS ARE LEAVING MONEY ON THE TABLE ===== */}
+      <section className="py-16 lg:py-28 bg-[#0A0A0A]">
+        <div className="section-container">
+          <SectionHeading
+            subtitle="The Opportunity"
+            title="Why Most MedSpas Are Leaving Money on the Table"
+            light={true}
+          />
+
+          <AnimatedSection>
+            <p className="text-white/85 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto text-center mb-12">
+              Many medspas assume growth comes from generating more leads. In reality, substantial
+              revenue opportunities already exist inside most practices.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5 max-w-4xl mx-auto mb-12">
+            {moneyStats.map((item, index) => (
+              <AnimatedSection key={item.stat} delay={index * 0.1}>
+                <div className="h-full bg-[#111111] border border-white/10 p-6 lg:p-7 text-center">
+                  <p
+                    className="text-5xl lg:text-6xl font-light mb-4 text-gold"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    {item.stat}
+                  </p>
+                  <div className="w-10 h-px bg-gold/60 mb-4 mx-auto" />
+                  <p className="text-white/85 text-sm leading-relaxed">
+                    {item.label}
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.1}>
+            <div className="max-w-3xl mx-auto space-y-5 text-center">
+              <p className="text-white/85 text-base lg:text-lg leading-relaxed">
+                Yet many consultations focus only on the treatment a patient initially requested.
+                The result? Missed revenue opportunities. Lower patient lifetime value. Reduced
+                profitability.
+              </p>
+              <p className="text-white text-base lg:text-lg leading-relaxed">
+                At RM Strategic Growth, we help practices improve consultation conversion,
+                treatment plan acceptance, patient retention, and operational performance so
+                they can generate more revenue from the patients and leads they already have.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ===== SERVICES ACCORDION ===== */}
+      <section className="py-12 lg:py-20 bg-[#080808]">
         <div className="section-container">
           <SectionHeading
             subtitle="Our Services"
-            title="How We Help You Grow"
-            description="Strategic support across growth, operations, leadership, patient experience, launch planning, and founder advisory."
+            title="How We Help You Make More Money"
+            description="Tap a pillar to see what's included."
             light={true}
             useBodoni={false}
           />
 
-          <ServiceNavigation />
-
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                service={service}
-                index={index}
-              />
-            ))}
-          </div>
+          <ServicesAccordion />
         </div>
       </section>
 
@@ -381,7 +373,7 @@ export default function Services() {
               we provide strategic guidance designed specifically for the modern aesthetics industry.
             </p>
             <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
-              Schedule a Consultation
+              Schedule A Free Discovery Call
               <ArrowRight className="ml-2" size={16} />
             </a>
           </AnimatedSection>

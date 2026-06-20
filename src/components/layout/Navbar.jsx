@@ -92,7 +92,7 @@ export default function Navbar() {
               href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
               className="hidden lg:inline-flex btn-primary text-xs tracking-widest"
             >
-              Schedule a Call
+              Schedule A Free Discovery Call
             </a>
 
             {/* Mobile Menu Button */}
@@ -122,32 +122,21 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-white lg:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
-              {navLinks.map((link, index) => (
-                <motion.div
+              {navLinks.map((link) => (
+                <Link
                   key={link.path}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                  to={link.path}
+                  className={`text-2xl tracking-widest uppercase transition-colors py-2 px-4 ${
+                    location.pathname === link.path
+                      ? 'text-gold'
+                      : 'text-charcoal/70 hover:text-black'
+                  }`}
+                  style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  <Link
-                    to={link.path}
-                    className={`text-2xl tracking-widest uppercase transition-colors ${
-                      location.pathname === link.path
-                        ? 'text-gold'
-                        : 'text-charcoal/70 hover:text-black'
-                    }`}
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
+                  {link.name}
+                </Link>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-                className="mt-4"
-              >
+              <div className="mt-4">
                 <a
                   href="https://calendly.com/romymittler/30min"
                   target="_blank"
@@ -155,9 +144,9 @@ export default function Navbar() {
                   className="btn-primary"
                   onClick={() => setIsMobileOpen(false)}
                 >
-                  Schedule a Call
+                  Schedule A Free Discovery Call
                 </a>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}

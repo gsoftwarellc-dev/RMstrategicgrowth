@@ -88,11 +88,10 @@ const stats = [
   },
   {
     icon: Target,
-    value: 32,
-    suffix: '+',
-    label: 'States Covered Nationwide',
+    label: 'Operational Excellence',
+    tags: ['Consultation Conversion', 'Revenue Growth', 'Patient Retention', 'Operational Excellence'],
     strength: 86,
-    insight: 'Broad nationwide reach',
+    insight: 'More valuable than geography',
   },
 ]
 
@@ -100,36 +99,44 @@ const approaches = [
   {
     number: '01',
     title: 'Discover & Diagnose',
-    desc: 'We start by understanding your practice inside and out — operations, team dynamics, patient experience, financials, and growth challenges.',
+    desc: 'We analyze your business to identify revenue opportunities, conversion gaps, profit leaks, patient retention challenges, and operational inefficiencies that may be limiting growth.',
   },
   {
     number: '02',
-    title: 'Strategic Roadmap',
-    desc: 'We create a customized strategic plan addressing your specific operational blind spots, growth opportunities, and scaling potential.',
+    title: 'Revenue Growth Plan',
+    desc: 'We develop a customized action plan focused on increasing consultation conversion, improving patient lifetime value, maximizing treatment plan acceptance, and improving profitability.',
   },
   {
     number: '03',
     title: 'Implement & Optimize',
-    desc: 'Our team works alongside yours to implement systems, refine processes, develop leadership, and create accountability structures.',
+    desc: 'We work alongside your team to improve consultation processes, strengthen accountability, optimize systems, and implement strategies that increase revenue and operational performance.',
   },
   {
     number: '04',
     title: 'Scale & Sustain',
-    desc: 'We help you build a business that is not only profitable, but sustainable — with the infrastructure to support long-term growth.',
+    desc: 'Our goal is to help you build a business that generates stronger revenue, healthier profit margins, and sustainable long-term growth.',
   },
 ]
 
 const taglines = [
   {
-    text: 'Built to Scale, Designed to Last',
+    text: 'The Most Profitable Lead Is Often The One You’ve Already Paid For',
     author: 'RM Strategic Growth',
   },
   {
-    text: 'Where Aesthetic Vision Meets Strategic Execution',
+    text: 'More Revenue Doesn’t Always Require More Leads',
     author: 'RM Strategic Growth',
   },
   {
-    text: 'Real Strategy, Real Growth, Real Industry Experience',
+    text: 'Consultation Conversion Drives Growth',
+    author: 'RM Strategic Growth',
+  },
+  {
+    text: 'Profitability Matters More Than Revenue',
+    author: 'RM Strategic Growth',
+  },
+  {
+    text: 'Strong Foundations Create Sustainable Growth',
     author: 'RM Strategic Growth',
   },
 ]
@@ -142,7 +149,7 @@ export default function Results() {
         <title>Results & Approach — RM Strategic Growth</title>
         <meta
           name="description"
-          content="See how RM Strategic Growth delivers measurable results for aesthetic practices through strategic consulting, operational excellence, and data-driven growth strategies."
+          content="Real results, real ownership experience. RM Strategic Growth helps aesthetic businesses make more money by improving consultation conversion, increasing patient value, strengthening operations, and improving profitability."
         />
       </Helmet>
 
@@ -168,21 +175,25 @@ export default function Results() {
               </p>
               <div className="gold-line-center mb-8" />
               <h1 className="text-white max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-heading)' }}>
-                Proven Results,{' '}
+                Real Results.{' '}
                 <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
-                  Strategic Impact
+                  Real Ownership Experience.
                 </span>
               </h1>
               <p className="text-white/85 text-base mt-6 max-w-2xl mx-auto leading-relaxed">
-                Our approach combines decades of hands-on experience with strategic methodology
-                to deliver measurable growth for aesthetic businesses.
+                Built by a former medspa owner who generated multi seven-figure revenue and
+                successfully sold her business after seven years.
+              </p>
+              <p className="text-white/85 text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+                We help aesthetic businesses make more money by improving consultation conversion,
+                increasing patient value, strengthening operations, and improving profitability.
               </p>
               <div className="mt-10">
                 <a
                   href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                   className="btn-primary group inline-flex w-full sm:w-auto justify-center"
                 >
-                  Book a Call
+                  Schedule A Free Discovery Call
                   <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
                 </a>
               </div>
@@ -198,13 +209,15 @@ export default function Results() {
                 </p>
                 <div className="gold-line-center mb-7" />
                 <h2 className="text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
-                  How We{' '}
+                  How We Help MedSpas{' '}
                   <span className="italic" style={{ fontFamily: 'var(--font-accent)', color: 'var(--color-gold)' }}>
-                    Drive Growth
+                    Make More Money
                   </span>
                 </h2>
                 <p className="text-white text-base lg:text-lg max-w-xl mx-auto leading-relaxed">
-                  A structured, proven methodology that transforms aesthetic businesses from the inside out.
+                  Most medspas don't need more leads. They need to convert more consultations,
+                  increase treatment plan acceptance, improve patient retention, and maximize the
+                  opportunities already inside their business.
                 </p>
               </AnimatedSection>
 
@@ -262,26 +275,24 @@ export default function Results() {
                   </p>
                   <div className="gold-line mb-8" />
                   <h2 className="text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-                    Experience That{' '}
+                    Built By Someone Who{' '}
                     <span className="italic text-gold" style={{ fontFamily: 'var(--font-accent)' }}>
-                      Actually Matters
+                      Actually Owned A MedSpa
                     </span>
                   </h2>
                   <div className="space-y-5">
                     <p className="text-white leading-relaxed">
-                      Growth in this industry rarely happens in a straight line. Success comes through
-                      testing, adapting, learning, refining, and understanding what actually works
-                      operationally — not just what sounds good online.
+                      Most consultants advise aesthetic businesses. Very few have personally built,
+                      operated, scaled, and sold one.
                     </p>
                     <p className="text-white leading-relaxed">
-                      Our advisory team brings specialized, real world experience from multiple sides
-                      of the industry. Amanda Lewis brings advanced clinical and aesthetic expertise.
-                      Emily Shea brings extensive expertise in business development and sales strategy.
+                      For seven years, Romy Mittler owned and operated a successful South Florida
+                      medical spa, generating multi seven-figure revenue before successfully exiting
+                      through a business sale.
                     </p>
                     <p className="text-white leading-relaxed">
-                      Together, our team combines operational experience, clinical expertise, leadership,
-                      branding, patient experience, sales strategy, and growth execution under one
-                      consulting group.
+                      Today she helps aesthetic businesses improve revenue, profitability, patient
+                      retention, and operational performance.
                     </p>
                   </div>
                   <div className="mt-10">
@@ -289,7 +300,7 @@ export default function Results() {
                       href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"
                       className="btn-primary group inline-flex w-full sm:w-auto justify-center"
                     >
-                      Book Now
+                      Schedule A Free Discovery Call
                       <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse ml-2" />
                     </a>
                   </div>
@@ -305,6 +316,32 @@ export default function Results() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== ILLUSTRATIVE RESULTS EXAMPLE ===== */}
+      <section className="py-16 lg:py-28 bg-black">
+        <div className="section-container">
+          <AnimatedSection className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
+            <p className="text-gold text-xs font-semibold tracking-[0.28em] uppercase mb-4">
+              Real Impact
+            </p>
+            <div className="gold-line-center mb-6" />
+            <h2 className="text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              We Help MedSpas Make More Money
+            </h2>
+            <p className="text-white text-base lg:text-lg leading-relaxed">
+              A sample breakdown of the kind of growth our clients see across revenue, conversion, and profitability.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <img
+              src="/images/result.PNG"
+              alt="Illustrative before and after results: monthly revenue, consultation conversion, cost of goods, and net profit improvements"
+              className="w-full max-w-4xl mx-auto rounded-lg border border-white/10"
+            />
+          </AnimatedSection>
         </div>
       </section>
 
@@ -336,20 +373,33 @@ export default function Results() {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <p
-                    className="text-5xl lg:text-6xl font-light mb-4 text-gold"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    {stat.displayValue ? (
-                      stat.displayValue
-                    ) : (
-                      <AnimatedCounter
-                        end={stat.value}
-                        suffix={stat.suffix}
-                        prefix={stat.prefix || ''}
-                      />
-                    )}
-                  </p>
+                  {stat.tags ? (
+                    <div className="flex flex-wrap gap-1.5 mb-4 min-h-[88px] lg:min-h-[96px] items-start content-start">
+                      {stat.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-gold text-[11px] font-semibold tracking-wide border border-gold/30 bg-gold/5 px-2.5 py-1.5"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    <p
+                      className="text-5xl lg:text-6xl font-light mb-4 text-gold"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      {stat.displayValue ? (
+                        stat.displayValue
+                      ) : (
+                        <AnimatedCounter
+                          end={stat.value}
+                          suffix={stat.suffix}
+                          prefix={stat.prefix || ''}
+                        />
+                      )}
+                    </p>
+                  )}
                   <div className="w-10 h-px bg-gold/60 mb-4 transition-all duration-300 group-hover:w-16" />
                   <p className="text-white/78 text-xs tracking-[0.18em] uppercase leading-relaxed">
                     {stat.label}
@@ -366,7 +416,6 @@ export default function Results() {
           </div>
         </div>
       </section>
-
 
       {/* ===== TAGLINE CARDS ===== */}
       <section className="relative py-20 lg:py-32 bg-[#0A0A0A] overflow-hidden">
@@ -521,7 +570,7 @@ export default function Results() {
               grow smarter, operate stronger, and scale profitably.
             </p>
             <a href="https://calendly.com/romymittler/30min" target="_blank" rel="noopener noreferrer"  className="btn-primary w-full sm:w-auto justify-center text-center">
-              Schedule a Consultation
+              Schedule A Free Discovery Call
               <ArrowRight className="ml-2" size={16} />
             </a>
           </AnimatedSection>
