@@ -9,7 +9,7 @@ const teamMembers = [
   {
     name: 'Romy Mittler',
     image: '/images/F05D89D5-F04B-4430-9108-B88E73820A05.PNG',
-    desc: 'Founder & CEO. Over 17 years of firsthand experience building and operating successful aesthetic businesses.',
+    desc: 'Founder & CEO. Backed by 30+ years of combined experience across aesthetic business growth.',
   },
   {
     name: 'Amanda Lewis',
@@ -175,7 +175,11 @@ export default function Contact() {
               Schedule Your Consultation
             </h2>
             <p className="text-black/70 max-w-xl mx-auto text-base">
-              You can directly call on this number <span className="font-semibold text-black">407-575-5121</span> or book a suitable time slot below.
+              You can email directly to book at{' '}
+              <a href="mailto:info@rmstrategicgrowth.com" className="font-semibold text-black hover:text-gold transition-colors">
+                info@rmstrategicgrowth.com
+              </a>{' '}
+              or choose a suitable time slot below.
             </p>
           </AnimatedSection>
 

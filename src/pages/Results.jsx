@@ -8,7 +8,6 @@ import {
   TrendingUp,
   Users,
   Award,
-  Target,
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
 import SectionHeading from '../components/ui/SectionHeading'
@@ -85,13 +84,6 @@ const stats = [
     label: 'Patients, Providers & Practices Served',
     strength: 96,
     insight: 'Broad market exposure',
-  },
-  {
-    icon: Target,
-    label: 'Operational Excellence',
-    tags: ['Consultation Conversion', 'Revenue Growth', 'Patient Retention', 'Operational Excellence'],
-    strength: 86,
-    insight: 'More valuable than geography',
   },
 ]
 
@@ -182,7 +174,7 @@ export default function Results() {
               </h1>
               <p className="text-white/85 text-base mt-6 max-w-2xl mx-auto leading-relaxed">
                 Built by a former medspa owner who generated multi seven-figure revenue and
-                successfully sold her business after seven years.
+                successfully sold her business after many years.
               </p>
               <p className="text-white/85 text-base mt-4 max-w-2xl mx-auto leading-relaxed">
                 We help aesthetic businesses make more money by improving consultation conversion,
@@ -286,7 +278,7 @@ export default function Results() {
                       operated, scaled, and sold one.
                     </p>
                     <p className="text-white leading-relaxed">
-                      For seven years, Romy Mittler owned and operated a successful South Florida
+                      For many years, Romy Mittler owned and operated a successful South Florida
                       medical spa, generating multi seven-figure revenue before successfully exiting
                       through a business sale.
                     </p>
@@ -361,7 +353,7 @@ export default function Results() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5">
             {stats.map((stat, index) => (
               <AnimatedSection key={stat.label} delay={index * 0.1}>
                 <div className="group h-full bg-[#111111] border border-white/10 p-6 lg:p-7 transition-all duration-300 hover:border-gold/45 hover:bg-[#141414]">

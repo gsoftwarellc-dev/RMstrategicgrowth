@@ -13,7 +13,7 @@ const teamMembers = [
     image: '/images/Romy Speech 2.PNG',
     bio: [
       'Romy Mittler is the founder of RM Strategic Growth, a consulting firm focused on helping medspas, aesthetic practices, and wellness brands strengthen operations, elevate patient experience, improve profitability, and scale strategically.',
-      'With over 17 years of firsthand experience building and operating a successful aesthetic business, Romy brings a rare combination of operational insight, leadership experience, branding expertise, and real world understanding of the medical aesthetics industry.',
+      'With over 30 years of combined experience across the aesthetic industry, RM Strategic Growth brings a rare combination of operational insight, leadership experience, branding expertise, and real world understanding of the medical aesthetics business.',
       'After founding and growing a successful medspa in the highly competitive South Florida market, Romy successfully exited the business, providing her with valuable perspective not only on growth and operations, but also on scalability, team development, business infrastructure, and long term enterprise value.',
       'Known for her competitive, direct yet solutions oriented approach, Romy helps practices identify operational blind spots, strengthen internal systems, improve leadership structure, and create businesses that are not only profitable, but sustainable.',
     ],
@@ -58,7 +58,7 @@ export default function About() {
         <title>About Us — RM Strategic Growth | Meet Our Expert Team</title>
         <meta
           name="description"
-          content="Meet the team behind RM Strategic Growth. Founded by Romy Mittler with 17+ years of aesthetic industry experience. Our experts bring real-world operational, clinical, and strategic expertise."
+          content="Meet the team behind RM Strategic Growth. Founded by Romy Mittler and backed by 30+ years of combined aesthetic industry experience. Our experts bring real-world operational, clinical, and strategic expertise."
         />
       </Helmet>
 

@@ -9,11 +9,9 @@ import {
   Award,
   Briefcase,
   Heart,
-  BarChart3,
   Settings,
   Sparkles,
   ArrowRight,
-  Newspaper,
   Quote,
 } from 'lucide-react'
 import AnimatedSection from '../components/ui/AnimatedSection'
@@ -25,7 +23,7 @@ const teamMembers = [
     slug: 'romy-mittler',
     name: 'Romy Mittler',
     image: '/images/F05D89D5-F04B-4430-9108-B88E73820A05.PNG',
-    desc: 'Founder & CEO. Over 17 years of firsthand experience building and operating successful aesthetic businesses.',
+    desc: 'Founder & CEO. Backed by 30+ years of combined experience across aesthetic business growth.',
   },
   {
     slug: 'amanda-lewis',
@@ -356,19 +354,18 @@ export default function Home() {
               href="https://medium.com/authority-magazine/romy-mittler-of-rm-strategic-growth-group-5-things-i-wish-someone-told-me-before-i-became-a-f8f853383b0e"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block max-w-4xl mx-auto"
+              className="group block max-w-5xl mx-auto"
             >
-              <div className="relative grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 lg:gap-10 items-center bg-white/[0.04] border border-white/10 rounded-[1.75rem] p-8 lg:p-12 transition-all duration-500 hover:border-gold/50 hover:bg-white/[0.06] hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
-                {/* Publication badge */}
-                <div className="flex flex-col items-center md:items-start">
-                  <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mb-4 transition-colors duration-500 group-hover:bg-gold/20">
-                    <Newspaper size={32} className="text-gold" />
-                  </div>
-                  <p className="text-gold text-xs font-semibold tracking-[0.22em] uppercase text-center md:text-left">
-                    Authority
-                    <br />
-                    Magazine
-                  </p>
+              <div className="relative grid grid-cols-1 md:grid-cols-[minmax(220px,300px)_1fr] gap-8 lg:gap-12 items-center bg-white/[0.04] border border-white/10 rounded-[1.75rem] p-6 lg:p-10 transition-all duration-500 hover:border-gold/50 hover:bg-white/[0.06] hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
+                {/* Magazine cover */}
+                <div className="relative mx-auto w-full max-w-[260px] md:max-w-none">
+                  <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl bg-gold/20 blur-xl opacity-40 transition-opacity duration-500 group-hover:opacity-70" />
+                  <img
+                    src="/images/magazine.png"
+                    alt="Authority Magazine feature cover with Romy Mittler"
+                    className="relative w-full rounded-2xl border border-gold/25 shadow-2xl shadow-black/50 transition-transform duration-500 group-hover:-translate-y-1"
+                    loading="lazy"
+                  />
                 </div>
 
                 {/* Content */}
@@ -596,10 +593,10 @@ export default function Home() {
                 strategically.
               </p>
               <p className="text-white/85 text-base leading-relaxed mb-6">
-                With over 17 years of firsthand experience building and operating a successful
-                aesthetic business, Romy brings a rare combination of operational insight,
+                With over 30 years of combined experience across the aesthetic industry,
+                RM Strategic Growth brings a rare combination of operational insight,
                 leadership experience, branding expertise, and real world understanding of the
-                medical aesthetics industry.
+                medical aesthetics business.
               </p>
               <p
                 className="text-gold text-2xl lg:text-3xl italic mb-8 leading-tight"
@@ -718,12 +715,11 @@ export default function Home() {
                 them, and built through them.
               </p>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
-                  { icon: Award, label: '17+ Years Experience' },
+                  { icon: Award, label: '30+ Years Combined Experience' },
                   { icon: Briefcase, label: 'Founded & Exited Successfully' },
                   { icon: Heart, label: 'Patient-First Approach' },
-                  { icon: BarChart3, label: 'Data-Driven Strategy' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3">
                     <item.icon size={18} className="text-gold flex-shrink-0" />
