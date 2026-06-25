@@ -378,9 +378,10 @@ export default function Home() {
                     "5 Things I Wish Someone Told Me Before I Became A Founder"
                   </h3>
                   <p className="text-white/75 text-base leading-relaxed mb-6">
-                    From a COVID-19 shutdown to a fraud incident, Romy reflects on the
-                    adaptability and integrity that turned early setbacks into sustainable,
-                    long-term growth, and the advice she wishes she had from the start.
+                    Featured in Authority Magazine, Romy shares the lessons learned from
+                    building, scaling, and successfully exiting a multi seven figure
+                    aesthetics business, along with practical insights for entrepreneurs
+                    and business owners.
                   </p>
                   <span className="inline-flex items-center text-gold font-semibold text-sm tracking-[0.12em] uppercase">
                     Read the Full Feature
